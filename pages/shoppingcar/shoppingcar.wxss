@@ -1,0 +1,131 @@
+/* shoppingcar */
+.goodsNull{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.goodsNull image{
+  height: 320px;
+}
+
+/* 选中修饰 */
+checkbox .wx-checkbox-input{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx; /* 背景的宽 */
+   height: 40rpx; /* 背景的高 */
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+   border: none;
+   background: red;
+   color: #FFFFFF;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
+.isEdit{
+  height: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #EEEEEE;
+  text-align: right;
+  font-size: 14px;
+  padding-right: 20px;
+  color: #AAAAAA;
+}
+.isEdit text{
+  padding-right: 20px;
+}
+.operation{
+  display: inline-flex;
+  width: 100rpx;
+  height: 300rpx;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: -110rpx;
+}
+.productList{
+  display: flex;
+  margin-top: 10px;
+  height: 300rpx;
+}
+.productScroll{
+  height: 320rpx;
+  align-items: flex-start;
+  white-space: nowrap;
+}
+.productItem{
+  background-color: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  box-shadow: 0px 0px 3px #EEEEEE;
+  width: 620rpx;
+  padding: 15rpx;
+  display: inline-flex;
+  white-space: normal;
+}
+.productImgBox{
+  height: 200rpx;
+  overflow-y: hidden;
+}
+.productImg{
+  width: 220rpx;
+}
+.productInfo{
+  font-size: 12px;
+  color: #726964;
+  width: 360rpx;
+  padding: 20rpx;
+  text-align: left;
+}
+.productInfo text{
+  display: block;
+}
+.productCount{
+  font-size: 8px;
+  display: flex;
+  float: right;
+}
+.productCount view{
+  line-height: 1.2;
+  width: 50rpx;
+}
+.numText{
+  width: 50rpx;
+  background-color: #e5e5e533;
+}
+.Incidental{
+  display: inline;
+  width: 100rpx;
+  height: 300rpx;
+  padding: 220rpx 57rpx;
+}
+.delIcon{
+  background-color: #ec4849;
+  color: #FFFFFF;
+  white-space: nowrap;
+  font-size: 14px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  height: 307rpx;
+  z-index: -1;
+}
+.delIcon::after{
+  border-radius: 0;
+  border-bottom: 1px solid #FFFFFF;
+}

@@ -1,0 +1,85 @@
+<!--pages/detail/detail.wxml-->
+<view>
+  <view class='swiper'>
+    <swiper class='swiperMain' indicator-dots="{{ false }}" autoplay="{{ true }}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="unique">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='content'>
+    <view class='contentTitle'>
+      <!-- <navigator url='' open-type="navigate">今日配送专场>>></navigator> -->
+      <text class='titleName'>{{ goodsName }}</text>
+    </view>
+    <view class='contentInfo'>
+      <view class='contentInfoImg'>
+        <image src='/images/banner.jpg' />
+      </view>
+      <view class='contentInfoText'>
+        <text>英制规格{{ goodsInfo.info }}</text>
+        <text>{{ goodsInfo.realWeight }}</text>
+        <text>{{ goodsInfo.tableWare }}</text>
+      </view>
+    </view>
+    <text class='contentWeight'>规格选择</text>
+    <view class='contentSelect'>
+      <block wx:for="{{ info }}" wx:key="unique" wx:for-index="key">
+        <view bindtap="goodsClick" id='{{ key }}' class='{{ item.active == true ? "contentChecked" : "contentSelected" }}'>
+          {{ item.peopleCount }}人份 [{{ item.price }}元]
+          <view class='{{ item.active == true ? "active" : " " }}'></view> 
+        </view>
+      </block>
+    </view>
+    <view class='contentNum'>
+      <text>购买数量：</text>
+      <view class='numButton'>
+        <view class='numAdd' bindtap="countAdd">+</view>
+        <view class='numText'>{{ count }}</view>  
+        <view class='numDel' bindtap="countDel">-</view>
+      </view>
+    </view>
+    <view class='amount'>合计：{{ count * goodsInfo.price }} 元</view>
+    <view class='clearfix'></view>
+    <view class='contentTab'><text>商品详情</text></view>
+    <!-- <view class='contentTab'>
+      <view bindtap="activeChange" class='{{ active == true ? "contentTabSelected" : "contentTabNowrap" }}'>商品详情</view>
+      <view bindtap="activeChange" class='{{ active == false ? "contentTabSelected" : "contentTabNowrap" }}'>用户评论</view>
+    </view> -->
+    <!--  -->
+    <view wx:if="{{ active }}">
+      <image src='{{ basePath+goodsInfo.detailedUrl }}'
+            style='width: 710rpx;height:1580rpx;'></image>
+    </view>
+    <view wx:else>
+        评论
+    </view>
+  </view>
+  <view class='excellent'>
+    <text class='everyDayExcellent'>推荐蛋糕</text>
+    <view class='excellentContent'>
+      <view class='excellentAssembly' wx:for="{{ excellentAssembly }}" wx:key="unique">
+        <navigator class='excellentChild' 
+                  url='/pages/detail/detail?goodsName={{ item.name }}&gId={{ item.gId }}' 
+                  open-type="navigate">
+          <image src="{{ item.logo }}" class="excellentImage"/>
+          <text class='excellentChildFirst'>{{ item.name }}</text>
+          <text>{{ item.price }}</text>
+          <text>{{ item.note }}</text>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view style='height: 50px;'></view>
+  <view class='joinCar'>
+    <button bindtap='callServer'><icon class='icon iconfont icon-kefu'></icon></button>
+    <button bindtap='addCollection'>
+      <icon style='{{ isCollection?"color: #f6a012;":"" }}' class='icon iconfont icon-klmshoucang'></icon>
+    </button>
+    <button wx:if="{{ isCollage }}" style='width: 500rpx;' bindtap='addCollage'>拼团</button>
+    <button wx:else bindtap="addShopcar">加入购物车</button>
+    <button wx:if="{{ !isCollage }}" bindtap="payment">立即购买</button>
+  </view>
+</view>

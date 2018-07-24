@@ -1,0 +1,211 @@
+// pages/detail/detail.js
+const app = getApp();
+import __config from '../../vendor/url.js';
+
+Page({
+  data: {
+    true: true,
+    false: false,
+    interval: 3000,
+    duration: 500,
+    imgUrls: [
+      'http://img1.1date1cake.com/images/201804/goods_img/71_G_1523323288324.jpg',
+      'http://img3.1date1cake.com/images/201804/goods_img/71_P_1523323842950.jpg'
+    ],
+    basePath: __config.basePath,
+    gId: 0,
+    goodsName: '',
+    info:[],
+    // 选中数据
+    goodsInfo:{},
+    // 是否收藏
+    isCollection: false,
+    count: 1,
+    active: true,
+    isCollage: false,
+    collageId: 0,
+    excellentAssembly: []
+  },
+  goodsClick(e){
+    let that = this,index = e.currentTarget.id;
+    for (let value of that.data.info){
+      value.active = false;
+    }
+    
+    that.data.info[index].active = true;
+    that.setData({
+      info: that.data.info,
+      gId: that.data.info[index].gId,
+      goodsInfo:that.data.info[index],
+      count: 1,
+    });
+  },
+  countAdd(e){
+    let that = this;
+    that.setData({
+      count: that.data.count+1
+    });
+  },
+  countDel (e) {
+    let that = this;
+    that.setData({
+      count: that.data.count > 1 ? that.data.count - 1 : 1,
+    });
+  },
+  activeChange(e){
+    let that = this;
+    that.setData({
+      active: !that.data.active
+    });
+  },
+  addCollection( e ){
+    let that = this, gId = this.data.gId;
+    app.post('/client/collection/save', 'POST', { gName: that.data.goodsName }).then(res => {
+      console.log(res)
+    })
+  },
+  editCollection(e) {
+    let that = this, gId = this.data.gId;
+    // let collection = ajax.post('/client/collection/update', 'POST', { gId: gId });
+    app.post('/client/collection/update', 'POST', { gName: that.data.goodsName}).then(res => {
+      console.log(res)
+    })
+  },
+  addShopcar( e ){
+    let that = this.data, obj = [],car = wx.getStorageSync('shoppingCar'),status = true;
+    // console.log(that.goodsInfo)
+    let goods = {
+      gId: that.goodsInfo.gId,
+      goodsName: that.goodsName,
+      info: that.goodsInfo,
+      count: that.count,
+      // 购物车选中
+      checked: false,
+    }
+    if(car){
+      obj = JSON.parse(car);
+      for(let item of obj){
+        if (item.gId == that.gId){
+          item.count += that.count;
+          status = false
+        }
+      }
+    }
+    console.log(obj)
+    if(status)
+      obj.push(goods);
+    wx.setStorageSync('shoppingCar', JSON.stringify(obj));
+  },
+  addCollage (e) {
+    // 生成订单 并且跳转 订单支付页面
+    let arr = wx.getStorageSync('shoppingCar')? JSON.parse(wx.getStorageSync('shoppingCar')): [], that = this.data;
+    for (let item of arr) {
+      item.checked = false;
+    }
+    arr.push({
+      gId: that.goodsInfo.gId,
+      goodsName: that.goodsName,
+      info: that.goodsInfo,
+      count: that.count,
+      collageId: that.collageId,
+      // 购物车选中
+      checked: true,
+    })
+    wx.setStorageSync('shoppingCar', JSON.stringify(arr));
+    wx.navigateTo({ url: '/pages/checkOrder/checkOrder' });
+  },
+  payment (e) {
+    // 生成订单 并且跳转 订单支付页面
+    let arr = wx.getStorageSync('shoppingCar') ? JSON.parse(wx.getStorageSync('shoppingCar')) : [], that = this.data;
+    for(let item of arr){
+      item.checked = false;
+    }
+    arr.push({
+      gId: that.goodsInfo.gId,
+      goodsName: that.goodsName,
+      info: that.goodsInfo,
+      count: that.count,
+      // 购物车选中
+      checked: true,
+    })
+    wx.setStorageSync('shoppingCar', JSON.stringify(arr));
+    wx.navigateTo({ url: '/pages/checkOrder/checkOrder' });
+  },
+  /**
+   * 拨打客服电话 
+   */
+  callServer: (e) => {
+    wx.makePhoneCall({
+      phoneNumber: '0752-6666666'
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad (options) {
+    // console.log(options);
+    if (options.Collage){
+      this.setData({ 
+        isCollage: true,
+        collageId: options.collageId
+      });
+    }
+
+    if(options.cId)
+      this.setData({ isCollection: true});
+
+    this.getProductDetail(options);
+    if (options.Collage){
+      this.getCollageGoods(options, options.collageId, options.gId)
+    }else{
+      this.getGoodsList(options);
+    }
+  },
+  getCollageGoods(options, collageId, gId){
+    let that = this,info = [];
+    app.post('/client/collage/findBy', 'GET', { collageId:collageId, gId:gId }).then(res => {
+      let goodsInfo = res.data.data;
+      goodsInfo.active = true;
+      info.push(goodsInfo);
+      let data = {
+        goodsName: options.goodsName,
+        gId: goodsInfo.gId,
+        info: info,
+        goodsInfo: goodsInfo,
+        isCollection: res.data.cId == -1 ? false : true
+      }
+      that.setData(data)
+    });
+  },
+  // 下方推荐商品
+  getProductDetail (options) {
+    let that = this, goods = [];
+    app.post('/client/index/index', 'GET', { shopId: __config.shopId, stateId: 1 ,limit: 5,page: 1 }).then(res => {
+      that.setData({
+        excellentAssembly: res.data.goods
+      })
+    });
+  },
+  getGoodsList (options) {
+    let that = this;
+    app.post('/client/goods/findGoods', 'GET', { shopId: __config.shopId, goodsName: options.goodsName }).then(res => {
+      let goodsInfo = [];
+      for (let i = 0; i < res.data.goods.length; i++) {
+        if (i) {
+          res.data.goods[i].active = false;
+        } else {
+          res.data.goods[i].active = true;
+          goodsInfo = res.data.goods[i];
+        }
+      }
+      let data = {
+        goodsName: options.goodsName,
+        gId: goodsInfo.gId,
+        info: res.data.goods,
+        goodsInfo: goodsInfo,
+        isCollection: res.data.cId == -1? false : true
+      }
+      that.setData(data)
+    });
+  }
+})

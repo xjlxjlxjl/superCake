@@ -1,0 +1,4 @@
+<!--pages/promise/promise.wxml-->
+<image src='http://www.chaorenbox.com/canFly/longPic/promise.jpg' 
+      mode='widthFix'
+      style='width: 750rpx;'></image>

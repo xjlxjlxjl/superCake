@@ -1,0 +1,66 @@
+/* pages/receipt/receipt.wxss */
+page{
+  font-size: 14px;
+  background-color: #eeeeee;
+}
+.orderList{
+  padding: 15rpx;
+  white-space: nowrap;
+}
+.orderChild{
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #AAAAAA;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.locationTime{
+  border-bottom: 1px solid #eeeeee;
+  padding: 8px 0;
+}
+.locationTime > view{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  line-height: 1.6;
+}
+.callBB{
+  display: inline-block;
+  background-color: #3388ff;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+.goodsList{
+  border-bottom: 1px solid #eeeeee;
+  line-height: 1.8;
+  padding: 10px 0;
+}
+.goodsInfo{
+  background-color: #EEEEEE;
+  border-radius: 5px;
+  padding: 5px 10px;
+  line-height: 1.4;
+  font-size: 12px;
+  margin: 10px 0;
+}
+.goodsInfo text:first-child{
+  color: #f59838;
+  display: block;
+}
+.goodsInfo text:last-child{
+  color: #979797;
+}
+.goods{
+  display: flex;
+  justify-content: space-between;
+}
+.receipt{
+  display: inline-block;
+  background-color: #003670;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+.operation{
+  text-align: right;
+  padding-top: 10px;
+}

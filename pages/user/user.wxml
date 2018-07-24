@@ -1,0 +1,130 @@
+<!--index.wxml-->
+<view>
+  <view wx:if="{{ hasUserInfo && canIUse }}" 
+        class='personalCenter' 
+        style='background-image: url("http://www.chaorenbox.com/canFly/headImgBackground.png");'>
+    <view>
+      <image src='{{ userInfo.avatarUrl }}' />
+    </view>
+    <view>
+      <text class='nickName'>{{ userInfo.nickName }}</text>
+      <icon wx:if="{{ userInfo.gender == 1}}" class='gender icon iconfont icon-xingbie-nan'></icon>
+      <icon wx:elif="{{ userInfo.gender == 2}}" class='gender icon iconfont icon-xingbie-nv'></icon>
+      <icon wx:else class='gender icon iconfont icon-xingbie-weizhi'></icon>
+    </view>
+  </view>
+  <button wx:else 
+          class='personalCenter' 
+          open-type="getUserInfo" 
+          bindgetuserinfo="getUserInfo"
+          style='background-image: url("http://www.chaorenbox.com/canFly/headImgBackground.png");'> 
+    <image src='/images/default.png' />
+    <view style='text-align: left;'>
+      <text class='nickName'>未登陆</text>
+      <text class='gender'>点击登陆账号</text>
+    </view>
+  </button>
+  <!-- 会员权益 -->
+  <view class='membership'>
+    <!-- <view>
+      <text class='rights'>会员权益</text>
+      <text>成为优享会员，预计1年将为您 <text class='colorPink'>节省1121.30元</text></text>
+    </view>
+    <navigator url='/pages/collection/collection'>
+      <text class='pull-right colorGery'>开通会员</text>
+      <icon class='pull-right colorGery icon iconfont icon-jiantou1'></icon>
+    </navigator> -->
+  </view>
+
+  <!--条件框  -->
+  <view class='classification' scroll-x="true" bindscroll="scroll" style="width: 100%">
+    <navigator url='/pages/order/order?oStateId=7&type=1' class='classificationNav'>
+      <icon class='icon iconfont icon-qianbao'></icon>
+      <text>待付款</text>
+    </navigator>
+    <navigator url='/pages/order/order?oStateId=3&type=1' class='classificationNav'>
+      <icon class='icon iconfont icon-peisong1'></icon>
+      <text>配送中</text>
+    </navigator> 
+    <navigator url='/pages/discount/discount' class='classificationNav'>
+      <icon class='icon iconfont icon-wodeyouhuijuan'></icon>
+      <text>优惠卷</text>
+    </navigator>
+    <navigator bindtap='showModel' class='classificationNav'>
+      <icon class='icon iconfont icon-more'></icon>
+      <text>敬请期待</text>
+    </navigator>
+  </view>
+  <view style='height: 2px;background-color:#EEEEEE;'></view>
+  <!-- 绑定手机 -->
+  <button open-type="getPhoneNumber" 
+          wx:if="{{ hasUserInfo && mobile == null }}"
+          class='getUserNumber'
+          bindgetphonenumber="getPhoneNumber">您尚未绑定手机 ( 点击此处绑定手机 )</button>
+  
+  <view style='height: 2px;background-color:#EEEEEE;'></view>
+  <!-- 绑定手机 -->
+  <view class='otherServices'>
+    <view>
+      <!-- <navigator class='receipt' wx:if="{{ hasUserInfo && Rider }}" url='/pages/receipt/receipt'>进入骑手接单页面</navigator>
+      <text wx:if="{{ hasUserInfo && Rider }}">其他服务</text> -->
+      <navigator url='/pages/order/order?oStateId=0&type=1' class='myOrder'>
+        <text>我的订单</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator>
+      <!-- <navigator url='' class='myOrder'>
+        <text>我的积分</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator> -->
+      <!-- <navigator url='' class='myOrder'>
+        <text>我的评论</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator> -->
+      <!-- <navigator url='' class='myOrder'>
+        <text>我的钱包</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator> -->
+      <navigator url='/pages/address/address' class='myOrder'>
+        <text>地址管理</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator>
+      <navigator url='/pages/birthday/birthday' class='myOrder'>
+        <text>生日管理</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator>
+      <navigator url='/pages/promise/promise' class='myOrder'>
+        <text>服务承诺</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator>
+      <navigator url='/pages/aboutUs/aboutUs' class='myOrder'>
+        <text>关于我们</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator>
+      <navigator bindtap='callServer' class='myOrder'>
+        <text>售后/退换 ( 点击拨打客服电话 )</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </navigator>
+      <button open-type="contact" class='myOrder'>
+        <text>在线客服</text>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </button>
+    </view>
+  </view>
+
+  <view class='ft' style='background-color: #FFFFFF;'>
+    <view class='ft-links'>
+      <text></text>
+        <navigator url="/pages/aboutUs/aboutUs">关于我们</navigator>
+      <text style='color:#DDDDDD;'>|</text>
+        <navigator url="/pages/promise/promise">服务承诺</navigator>
+      <text style='color:#DDDDDD;'>|</text>
+        <button class='callmeBB' open-type="contact">联系我们</button>
+      <text style='color:#DDDDDD;'>|</text>
+          <navigator url="/pages/notice/notice">购买须知</navigator>
+      <text></text>
+    </view>
+    <view class='ft-copyright'>
+      <image src='/images/icon.png'></image>
+    </view>
+  </view>
+</view>

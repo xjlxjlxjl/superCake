@@ -1,0 +1,27 @@
+<!--pages/goodsType/goodsType.wxml-->
+<view wx:if="{{ goodsList.length > 0 }}">
+  <!-- <scroll-view scroll-y='true 'style="height:{{height}}px" bindscrolltolower='lower'> -->
+    <button class='onlineService' open-type="contact"></button>
+    <view class='secondKill'>
+      <navigator class='secondKillChild' 
+                  wx:key="unique"
+                  url="/pages/detail/detail?goodsName={{ item.name }}&gId={{ item.gId }}"
+                  wx:for="{{ goodsList }}">
+        <view style='width:290rpx;height:200rpx;'>
+          <image src="{{ path + item.logo }}"/>
+        </view>
+        <view class='secondKillContent'>
+          <text class='killTitle'>{{ item.name }}</text>
+          <button class='rushBuy'>立即抢购</button>
+          <text class='secondKillChildPrice'>
+            <text>　　</text>
+            <text>商品价格 ￥{{ item.price }}</text>
+          </text>
+        </view>
+      </navigator>
+    </view>
+  <!-- </scroll-view> -->
+</view>
+<view wx:else>
+  <image mode='widthFix' style='width: 100%;' src='http://www.chaorenbox.com/canFly/longPic/tyepNull.jpg'></image>
+</view>

@@ -1,0 +1,88 @@
+<!--shoppingcar.wxml-->
+<view>
+  <view wx:if="{{ productList.length > 0 }}">
+  <!-- <view class='isEdit'>
+    <text bindtap='editChange'>编辑</text>
+  </view>
+  <view style='height: 20px;'></view> -->
+    <view style="min-height: {{height}}px">
+      <view class='productList' wx:for="{{ productList }}" wx:for-index="key" wx:key="unique">
+        <scroll-view class='productScroll' scroll-x="true">
+          <view class='operation'>
+            <checkbox-group id="{{ key }}" bindchange="checkboxChange">
+              <checkbox value='{{ key }}' checked='{{ item.checked }}'></checkbox>
+            </checkbox-group>
+          </view>
+          <view class='productItem'>
+            <navigator url='/pages/detail/detail?goodsName={{ item.goodsName }}&gId={{ item.gId }}'>
+              <image class='productImg' mode='widthFix' src='{{ path + item.info.logo[0] }}'></image>
+            </navigator>
+            <view class='productInfo'>
+              <text>{{ item.goodsName }}</text>
+              <text>{{ item.info.peopleCount }}</text>
+              <text>英制规格{{ item.info.info }}</text>
+              <text>{{ item.realWeight }}</text>
+              <text>{{ item.tableware }}</text>
+              <text>{{ item.info.price }}元 ｘ{{ item.count }}</text>
+              <view class='productCount'>
+                <view class='numAdd' id='{{ key }}' bindtap="countAdd">+</view>
+                <view class='numText'>{{ item.count }}</view>  
+                <view class='numDel' id='{{ key }}' bindtap="countDel">-</view>
+              </view>
+            </view>
+          </view>
+          <view class='Incidental'
+                id='{{ key }}'
+                bindtap="productDel"></view>
+        </scroll-view>
+        <button class='delIcon' 
+          id='{{ key }}' 
+          bindtap="productDel" 
+          >删除</button>
+      </view>
+    </view>
+    <!-- 合计&支付 -->
+    <view class='ft' style='background-color: #FFFFFF;'>
+      <view class='ft-links'>
+        <text></text>
+          <navigator url="/pages/aboutUs/aboutUs">关于我们</navigator>
+        <text style='color:#DDDDDD;'>|</text>
+          <navigator url="/pages/promise/promise">服务承诺</navigator>
+        <text style='color:#DDDDDD;'>|</text>
+          <button class='callmeBB' open-type="contact">联系我们</button>
+        <text style='color:#DDDDDD;'>|</text>
+          <navigator url="/pages/notice/notice">购买须知</navigator>
+        <text></text>
+      </view>
+      <view class='ft-copyright'>
+        <image src='/images/icon.png'></image>
+      </view>
+    </view>
+    <view style='height: 40px;'></view>
+    <view class='payMent'>
+      <button class='payMentBtn' bindtap='payMent'>去付款</button>
+      <text class='payMentText'>合计 ￥</text>{{ amount }}
+    </view>
+    <!-- <view class='boxShadow'></view> -->
+  </view>
+  <view class='goodsNull' wx:else>
+    <image src='../../images/null/shoppingcar.png'></image>
+    <!-- <view style='text-align:left;padding:10rpx;font-size:14px;color:#333333;'>推荐商品</view>
+    <view class='goodscontent'>
+      <navigator class='goodsItem' 
+              wx:for="{{ excellentAssembly }}" 
+              wx:key='unique'
+              url='/pages/detail/detail?goodsName={{ item.name }}&gId={{ item.gId }}'>
+        <image mode='widthFix' class='goodsImg' src='{{ basePath + item.logo }}'></image>
+        <view class='namespace'>
+          <text class='chineseName'>{{ item.chineseName }}</text>
+          <text class='englishName'>{{ item.englishName }}</text>
+          <view class='priceBuy'>
+            <text>￥{{ item.price }}</text>
+            <icon class='icon iconfont icon-gouwuche1'></icon>
+          </view>
+        </view>
+      </navigator>
+    </view> -->
+  </view>
+</view>

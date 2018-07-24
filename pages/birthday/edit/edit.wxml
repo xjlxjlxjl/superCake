@@ -1,0 +1,16 @@
+<!--pages/birthday/birthday.wxml-->
+<view>
+  <view class='addDetail'>
+    <view class='inputBlock'>
+      <input type="text" placeholder="姓名" bindblur="nameChange" value='{{ name }}' />
+    </view>
+    <view class='inputBlock'>
+      <picker mode="date" value="{{ date }}" bindchange="bindDateChange">
+        <view class="picker">
+          <input type="text" disabled='true' placeholder="生日" value='{{ date }}' />
+        </view>
+      </picker>
+    </view>
+  </view>
+  <button class='save' bindtap="saveBirthday">保存</button>
+</view>

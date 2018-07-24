@@ -1,0 +1,87 @@
+/*address.css  */
+/* addressNull */
+.addressNull{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 150rpx;
+}
+.addressNull image{
+  height: 320px;
+}
+.addressContent{
+  padding: 0px 0rpx 0px 20rpx;
+}
+
+/*addressList  */
+.addressList{
+  font-size: 14px;
+  border-bottom: 1px solid #DDDDDD;
+}
+.addressList .nameArea{
+  width: 250rpx;
+  line-height: 1.8;
+  padding: 10px 0px 10px 10px;
+  float: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  align-items: center;
+}
+.addressList .nameArea text:first-child{
+  display: block;
+}
+.addressList .addressArea{
+  width: 350rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  padding: 10px 0px 10px 0px;
+  line-height: 1.8;
+  float: left;
+  align-items: center;
+}
+.addressList .addressArea text:first-child{
+  display: block;
+}
+.addressList .editArea{
+  float: left;
+  width: 100rpx;
+  height: 70px;
+  line-height: 85px;
+  text-align: center;
+  color: grey;
+}
+.addressList .delArea{
+  position: absolute;
+  left: 750rpx;
+  background-color: #ca0c16;
+  width: 100rpx;
+  height: 70px;
+  line-height: 85px;
+  text-align: center;
+}
+.editArea image,
+.delArea image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+/* addAddressBtn */
+.addressBtn{
+  background-color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  padding: 15rpx;
+}
+.addressBtn button{
+  margin: 0;
+  width: 720rpx;
+  background-color: #FFFFFF;
+  color: #ca0c16;
+  border:1px solid #ca0c16;
+  font-size: 14px;
+  height: 45px;
+  line-height: 45px;
+}

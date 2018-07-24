@@ -1,0 +1,20 @@
+<!--pages/redpage/redpage.wxml-->
+<view>
+  <view class='discountTitle'>
+    <text class='sloganGolden'>买蛋糕 先领卷</text>
+    <text class='sloganGery'>我们已经帮您领取以下优惠卷</text>
+  </view>
+  <view class='discountMain' scroll-y="true">
+    <view wx:for="{{ discount }}" wx:key="unique"
+          class='discountItem' wx:for-index="key">
+      <view class='reduceAmount'>
+        <text>￥</text>
+        <text>{{ item.reduceAmount }}</text>
+      </view>
+      <view class='minAmount'>
+        <view>超人不会飞蛋糕卷</view>
+        <view>满{{ item.minAmount }}可以，特价商品除外</view>
+      </view>
+    </view>
+  </view>
+</view>

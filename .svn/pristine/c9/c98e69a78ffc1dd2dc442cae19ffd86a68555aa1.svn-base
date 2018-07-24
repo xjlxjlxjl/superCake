@@ -1,0 +1,124 @@
+//index.js
+//获取应用实例 获取全局变量
+import es6 from '../../vendor/es6-promise.js';
+// import setRequest from '../../utils/setRequest.js';
+import __config from '../../vendor/url.js';
+const app = getApp();
+
+Page({
+  data: {
+    imgUrls: [
+      'http://www.chaorenbox.com/canFly/banner1.jpg',
+      'http://www.chaorenbox.com/canFly/banner2.jpg',
+      'http://www.chaorenbox.com/canFly/banner3.jpg'
+    ],
+    true: true,
+    false: false,
+    interval: 3000,
+    duration: 500,
+    height: '',
+    // 分类
+    sliderSubclass: [],
+    discount: [],
+    // 热销商品
+    excellentAssembly: [],
+    // 拼团
+    GiftGoods: [],
+    locationName: '惠州',
+    page: 1,
+    limit: 6,
+    maxPage: 0,
+  },
+  onLoad(){
+    // let that = this;
+    // wx.chooseLocation({
+    //   success: (res) => {
+    //     console.log(res)
+    //     that.setData({
+    //       locationName: res.name,
+    //     });
+    //   }
+    // });
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          height: res.windowHeight,
+        })
+      }
+    });
+  },
+  onShow (e) {
+    setTimeout(() => { this.getGoodsList() },500);
+  },
+  getGoodsList(){
+    let that = this, res = undefined, goods = that.data.excellentAssembly;
+    if (that.data.maxPage == that.data.page)
+      return false;
+      
+    wx.showLoading({ title: '加载中', mask: true });
+    app.post('/client/index/index', 'GET', { 
+      shopId: __config.shopId, 
+      stateId: 1,
+      page: that.data.page,
+      limit: that.data.limit
+    }).then(res => {
+      wx.hideLoading();
+      // 获取红包
+      that.getRedPage(res.data.rPageIds);
+      that.getCollage();
+      // 获取是否为骑手
+      let sb = JSON.stringify(res.data.User)
+      wx.setStorageSync('sb', sb);
+      // console.log(res.data.User)
+      if (res.data.User.roleId == 10){
+        app.globalData.Rider = true;
+      }
+        
+      wx.setStorageSync('rPageIds', res.data.rPageIds);
+      for (let item of res.data.goods.list){
+        goods.push(item);
+      }
+      
+      that.setData({
+        excellentAssembly: goods,
+        sliderSubclass: res.data.goodsTypes,
+        page: ++that.data.page,
+        maxPage: res.data.goods.totalPage
+      })
+    });
+  },
+  getUserInfo(e) {
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },
+  getTypeList(e){
+    let that = this, id = e.currentTarget.id;
+    app.post('/client/goods/findListByType', 'GET', { 
+      shopId: __config.shopId, 
+      gTypeId: that.data.sliderSubclass[id].gTypeId 
+    }).then(res => {
+      that.setData({
+        excellentAssembly: res.data.data
+      })
+    });
+  },
+  getRedPage(rPageIds){
+    let that = this;
+    app.post('/client/redPage/findByRPageId', 'GET', { rPageIds: rPageIds }).then(res => {
+      that.setData({ discount: res.data.data })
+    });
+  },
+  getCollage(e){
+    let that = this;
+    app.post('/client/goods/findListByCollage', 'GET', { shopId: __config.shopId}).then( res => {
+      // console.log(res.data.data)
+      that.setData({ GiftGoods: res.data.data });
+    });
+  },
+  lower(){
+    this.getGoodsList();
+  }
+})

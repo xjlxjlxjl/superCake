@@ -1,0 +1,2 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<image src='/images/aboutUs.jpg' style='width: 750rpx;height: 2050rpx;'></image>

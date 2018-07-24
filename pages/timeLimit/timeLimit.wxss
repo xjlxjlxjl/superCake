@@ -1,0 +1,19 @@
+/* pages/timeLimit/timeLimit.wxss */
+.swiperBanner{
+  height: 487rpx;
+  width: 750rpx;
+}
+.swiperBanner image{
+  width: 100%;
+}
+.goodsTips{
+  color: #FFFFFF;
+  padding: 15rpx;
+  font-size: 50%;
+  width: 310rpx;
+  white-space: nowrap;
+  position: absolute;
+  z-index: 9;
+  margin-top: -70rpx;
+  background-color: #003a6c6e;
+}

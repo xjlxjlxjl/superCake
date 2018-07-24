@@ -1,0 +1,113 @@
+<view wx:if="{{ pageStatus == 1 }}">
+  <scroll-view scroll-y='true' style="height:{{height}}px" bindscrolltolower='lower'>
+    <view class='orderTab'>
+      <view bindtap='changeOrderStatus' id='0' class='{{ orderStatus == 0 ? "orderTabActive" : "" }}'>全部订单</view>
+      <view bindtap='changeOrderStatus' id='5' class='{{ orderStatus == 5 ? "orderTabActive" : "" }}'>已完成</view>
+      <view bindtap='changeOrderStatus' id='7' class='{{ orderStatus == 7 ? "orderTabActive" : "" }}'>待付款</view>
+      <view bindtap='changeOrderStatus' id='3' class='{{ orderStatus == 3 ? "orderTabActive" : "" }}'>待收货</view>
+    </view>
+    <view style='height: 45px;'></view>
+    <!--订单内容  -->
+    <!--ALL  -->
+    <view class='orderContent'>
+      <view wx:for="{{ orderList }}" wx:for-index="key" wx:key="unique">
+        <view class='orderHead'>订单号：
+          <text>{{ item.no }}</text>
+        </view>
+        <view class='orderStatus' data-index='{{ key }}' bindtap='showDetail'>
+          <view>
+            <text class='getDetail'>查看详情</text>
+            <text>店铺名：超人不会飞官方旗舰店</text>
+            <text>收货人：{{ item.aName }}{{ item.aGender == 'male' ? '先生' : '女士' }}</text>
+            <text>收货地址：{{ item.aArea + item.aDetail }}</text>
+            <text>状态：{{ item.oStateName }}</text>
+            <text>总价：{{ item.amount }}</text>
+          </view>
+        </view>
+        <view class='goodsList'>
+          <view wx:for="{{ item.oitems }}" wx:key="unique" wx:for-index="index" wx:for-item="val">
+            <image src='{{ path + val.logo }}'></image>
+            <text class='goodsName'>{{ val.name }}</text>
+            <text>数量：X {{ val.count }}</text>
+            <view><text>磅数：{{ val.info }}</text></view>
+          </view>
+          <view class='clearfix'></view>
+        </view>
+        <view class='orderOptions' wx:if="{{ item.oStateId == 5 || item.oStateId == 7 }}">
+          <button wx:if="{{ item.oStateId == 5 }}" disabled='true'>已完成</button>
+          <button wx:elif="{{ item.oStateId == 7 }}" data-no='{{ item.no }}' bindtap='payment'>去支付</button>
+          <view class='clearfix'></view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<view wx:elif="{{ pageStatus == 2 }}">
+  <view class='orderDetailTop'>
+    <text>订单详细</text>
+    <text bindtap='comeBack'>返回</text>
+  </view>
+  <view wx:if="{{ orderDetail.oStateId == 6 }}" class='transactionEnd'>
+    <view class='transactionClose'>
+      <image mode='widthFix' src='http://www.chaorenbox.com/canFly/loadingBar/transactionClose.png'></image>
+    </view>
+    <text class='transactionCloseText'>交易关闭</text>
+  </view>
+  <image mode='widthFix' style='width: 100%;' wx:elif="{{ orderDetail.oStateId == 7 }}" 
+         src='http://www.chaorenbox.com/canFly/loadingBar/waitPay.jpg'></image>
+  <image mode='widthFix' style='width: 100%;' wx:elif="{{ orderDetail.oStateId == 1 || orderDetail.oStateId == 2 }}" 
+         src='http://www.chaorenbox.com/canFly/loadingBar/payed.jpg'></image>
+  <image mode='widthFix' style='width: 100%;' wx:elif="{{ orderDetail.oStateId == 3 || orderDetail.oStateId == 4 }}"
+         src='http://www.chaorenbox.com/canFly/loadingBar/sendProduct.jpg'></image>
+  <image mode='widthFix' style='width: 100%;' wx:elif="{{ orderDetail.oStateId == 5 }}" 
+         src='http://www.chaorenbox.com/canFly/loadingBar/orderSuccess.jpg'></image>
+  <view class='orderDetailContent'>
+    <view class='flex-baseline orderDetailPay'>
+      <text selectable='true'>付款金额</text>
+      <text selectable='true' class='orderDetailContentPay'>￥{{ orderDetail.amount }}</text>
+    </view>
+    <view class='orderDetailContentInfo'>
+      <view class='flex-baseline'>
+        <text selectable='true'>当前状态</text>
+        <text selectable='true'>{{ orderDetail.oStateName }}</text>
+      </view>
+      <view class='flex-baseline'>
+        <text selectable='true'>商户简称</text>
+        <text selectable='true'>{{ orderDetail.shopName }}</text>
+      </view>
+      <view class='flex-baseline'>
+        <text selectable='true'>订单地址</text>
+        <text selectable='true'>{{ orderDetail.aArea + orderDetail.aDetail }}</text>
+      </view>
+      <view class='flex-baseline'>
+        <text selectable='true'>创建时间</text>
+        <text selectable='true'>{{ orderDetail.createTime }}</text>
+      </view>
+      <view class='flex-baseline'>
+        <text selectable='true'>交易单号</text>
+        <text selectable='true'>{{ orderDetail.no }}</text>
+      </view>
+      <view class='flex-baseline'>
+        <text selectable='true'>选择配送时间段: </text>
+      </view>
+      <view class='flex-baseline'>
+        <text></text>
+        <text selectable='true'>{{ orderDetail.startDeliveryTime }} - {{ orderDetail.endDeliveryTime }}</text>
+      </view>
+    </view>
+  </view>
+  <view class='orderDetailGoods goodsList'>
+    <view class='orderDetailGoodsItem' 
+          wx:for="{{ orderDetail.oitems }}" 
+          wx:key="unqiue"
+          wx:for-index="index"
+          wx:for-item="val">
+      <image src='{{ path + val.logo }}'></image>
+      <text class='goodsName'>{{ val.name }}</text>
+      <text>数量：X {{ val.count }}</text>
+      <view><text>磅数：{{ val.info }}</text></view>
+      <view class='clearfix'></view>
+    </view>
+  </view>
+  <button class='lineClientService' open-type="contact">联系客服</button>
+</view>

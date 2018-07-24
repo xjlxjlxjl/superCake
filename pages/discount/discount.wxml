@@ -1,0 +1,25 @@
+<view>
+  <view wx:if="{{ discountList.length > 0 }}">
+    <view class='letter' style='background-image: url("http://www.chaorenbox.com/canFly/letter.png");'></view> 
+    <view class='discountContent'>
+      <view class='discountList' 
+            scroll-x="true" 
+            wx:for="{{ discountList }}" 
+            wx:for-index="key" 
+            wx:key="unique">
+        <text class='discountTips'>超人{{ item.reduceAmount }}元优惠券</text>            
+        <view class='disContent'>
+          <text style='color: #ca0c16;'>
+            <text style='font-size: 14px;'>￥</text>
+            <text style='font-size: 32px;'>{{ item.reduceAmount }}</text>
+          </text>
+          <text class='discountTips'>满{{ item.minAmount }}可使用</text>
+        </view>
+        <text class='discountTips'>使用期限：{{ item.startTime }} - {{ item.endTime }}</text>
+      </view>
+    </view>
+  </view>
+  <view class='discountNull' wx:else>
+    <image src='/images/null/discount.png'></image>
+  </view>
+</view>

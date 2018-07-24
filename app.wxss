@@ -1,0 +1,409 @@
+/**app.wxss**/
+/* 基本配置 */
+html,body{
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar{
+  width: 0;
+}
+.clearfix{
+  clear: both;
+}
+.swiperMain{
+  width: 100%;
+}
+.slide-image{
+  width: 750rpx;
+  height: 900rpx;
+}
+.colorGery{
+  color: #aaaaaa;
+}
+.colorPink{
+  color: #ff69af;
+}
+.pull-right{
+  float: right;
+}
+.pull-left{
+  float: left;
+}
+
+/* 产品列表 */
+.everyDayExcellent{
+  display: block;
+  color: grey;
+  padding: 10px;
+  font-size: 14px;
+}
+.excellentContent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #e5e5e533;
+}
+.excellentAssembly{
+  text-align: left;
+  width: 356rpx;
+  margin: 6rpx;
+  border: 1px solid #EEEEEE;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  /* box-shadow: 0 0 5px #101010; */
+}
+.excellentImage{
+  width: 356rpx;
+  height: 427rpx;
+  border-radius: 5px;
+}
+
+.excellentChild text{
+  display: block;
+  font-size: 14px;
+  color: grey;
+}
+.excellentChildFirst{
+  color: #000000;
+}
+/* index discount allcake */
+
+.goodsType{
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: flex-end;
+}
+.goodsType > view{
+  width: 185rpx;
+  height: 185rpx;
+}
+.goodsType image{
+  width: 100%;
+}
+.goodsTitle{
+  padding: 15rpx;
+}
+.goodsTitle image{
+  width: 375rpx;
+}
+.goodscontent{
+  padding: 27rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.goodsItem{
+  padding: 0rpx 5rpx 25rpx 5rpx;
+  width: 341rpx;
+}
+.goodsImg{
+  width: 100%;
+}
+.namespace{
+  padding: 15rpx;
+  align-content: space-between;
+}
+.chineseName{
+  display: block;
+  text-align: center;
+  color: #313131;
+  font-size: 16px;
+  
+}
+.englishName{
+  font-size: 12px;
+  display: block;
+  text-align: center;
+  color: #989898;
+}
+.priceBuy{
+  margin-top: 15rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: #e70012;
+}
+.priceBuy icon{
+  font-size: 20px;
+}
+
+/* 数字加减 */
+.numButton{
+  display: inline-block;
+  width: 250rpx;
+  height: 34px;
+  border: 1px solid gery;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.numButton view:nth-child(2){
+  border-left: 0px solid #BBB;
+  border-right: 0px solid #BBB;
+  background-color: #FFFFFF;
+}
+.numButton view{
+  display: inline-block;
+  width: 33.33%;
+  height: 100%;
+  border: 1px solid #BBB;
+  background-color: #FFFFFF;
+}
+.numAdd,.numDel{
+  color: #CACACA;
+  background-color: #FFFFFF;
+}
+.numAdd,.numText,.numDel{
+  font-size: 18px;
+  text-align: center;
+  line-height: 1.9;
+}
+
+/*加入购物车  */
+.joinCar{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 49px;
+  background-color: #FFFFFF;
+  border-top: 1px solid #EEEEEE;
+}
+.joinCar button{
+  height: 100%;
+  float: left;
+  border-radius: 0px;
+  font-size: 16px;
+  line-height: 45px;
+  border: 0px solid #FFFFFF;
+}
+.joinCar button::after{
+  border-radius: 0px;
+  border: none;
+}
+.joinCar button:first-child{
+  width: 120rpx;
+  background-color: #FFFFFF;
+}
+.joinCar button:nth-child(2){
+  width: 315rpx;
+  background-color: #f6a012;
+  color: #FFFFFF;
+}
+.joinCar button:last-child{
+  width: 315rpx;
+  background-color: #ca0c16;
+  color: #FFFFFF;
+}
+
+/*信件抬头  */
+.letter{
+  height: 8px;
+  background-size: 100%;
+  background-position: center;
+  background-image: url('http://www.chaorenbox.com/canFly/letter.png');
+}
+
+/* 付款 */
+.payMent{
+  position: fixed;
+  bottom: 0;
+  height: 40px;
+  line-height: 40px;
+  color: #ec4849;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  background-color: #FFFFFF;
+  border-top: 1px solid #EEEEEE;
+  z-index: 9999;
+}
+.payMentText{
+  margin-left: 20px;  
+  font-size: 14px;
+  color: #726964;
+}
+.payMentBtn{
+  float: right;
+  width: 80px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  background-color: #ec4849;
+  color: #FFFFFF;
+  font-size: 14px;
+  border-radius: 0px;
+}
+.boxShadow{
+  position: fixed;
+  width: 100%;
+  height: 3px;
+  background-color: #000000;
+  bottom: -3px;
+  box-shadow: 0px -1px 10px #000000;
+}
+
+.callmeBB{
+  font-size: 12px;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  line-height: 16px;
+  background-color: initial;
+}
+.callmeBB::after{
+  border: none;
+}
+.ft{
+  background-color: #e5e5e533;
+}
+.ft-links{
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+  padding: 30px 15px 10px;
+}
+.ft-copyright{
+  padding: 20px 0 20px;
+  margin: 0 15px;
+  text-align: center;
+}
+.ft-copyright image{
+  width: 200rpx;
+  height: 104rpx;
+}
+
+/* 在线客服 */
+.onlineService{
+  background-image: url('http://cake.chaorenlaila.com/MiniAppImg/parts/onlineService.png?v=123');
+  background-size: 100% 100%;
+  position: fixed;
+  right: 0;
+  top: 35%;
+  z-index: 9;
+  width: 62rpx;
+  height: 237rpx;
+}
+
+/* 幕布 */
+html,
+page,
+.curtain{
+  height: 100%;
+}
+.curtain{
+  position: fixed;
+  background-color: #000000c4;
+  top: 0;
+  /* opacity: 0.7; */
+  width: 100%;
+  z-index: 99998;
+}
+.modal{
+  background-color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+  z-index: 99999;
+  width: 100%;
+}
+.modalHead{
+  border-bottom: 1px solid #EEEEEE;
+  font-size: 16px;
+  padding: 0 15px;
+  display: flex;
+  font-size: 14px;
+  padding: 15rpx;
+}
+.modalHead image{
+  width: 120rpx;
+}
+.modalGoodsName{
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.modalGoodsName text{
+  display: block;
+  line-height: 30px;
+}
+.modalGoodsName text:last-child{
+  color: #e70012;
+}
+.modalGoodsName image{
+  margin-top: 15rpx;
+  align-self: flex-start;
+}
+.modalContentTitle{
+  color: #000000;
+}
+.modalContent{
+  color: #999999;
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 15px;
+}
+.modalContent > text{
+  display: block;
+  padding-bottom: 10px;
+}
+
+/*地址默认按钮  */
+.addressDefault{
+  padding: 1rpx 7rpx 1rpx 7rpx;
+  font-size: 12px;
+  color: #ff63a1;
+  border: 1px solid #ff63a1;
+}
+
+/*iconFont  */
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1531445975182'); /* IE9*/
+  src: url('iconfont.eot?t=1531445975182#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAA8AAAsAAAAAFmAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZXHEnlY21hcAAAAYAAAADnAAACvmii1f5nbHlmAAACaAAACewAAA34np7L0mhlYWQAAAxUAAAAMQAAADYSdot9aGhlYQAADIgAAAAgAAAAJAhaBA5obXR4AAAMqAAAAB4AAABMTGX//WxvY2EAAAzIAAAAKAAAACggHCOqbWF4cAAADPAAAAAfAAAAIAEjAIRuYW1lAAANEAAAAUUAAAJtPlT+fXBvc3QAAA5YAAAApgAAAO7t99mIeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWWcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGBwYKp6/Y27438AQw9zAsA4ozAiSAwDoNAyXeJzFkk1OAkEQhb92EH+GUYe1MaxcuYCgchK2nIMDyT04giuP8HDFFfDV1MSgie6M1fk66VeV7up+DZwClXkwAyhvFCJerZZOr7js9AEvXt9yY2XEWkW1GrWaaKaFllppo+1ufzi46jg71fxb9qco3v143HH/OSI7puXc3dQ07uCKa/dy4r4uOGPom/geZfjL/n8c5f+O/hqjbn7vV2Oz7nGL6glddeJ3RU3iF0ZtEs5rkhC104SonSVxmuaJPUGPid1BT4l9Qs+JHUOLJH6cloldRKvEfqJNYmfRNonfutsnVB+e21K4AHicbVdrbBzVFb7n3p3HzuzM7Gtm/Npd7453xmbtdby73o038SOODTEh1Dg4AeHGcSkhkJZS8bBalSRyRAwGFQJtQ1UIpC8a+AGltAgJURRFClKBqg8JEZVEBdpUqEht1YdU2HHP3bVDYuqdua+5586Zc873nWMiELL8R/YKayIx0kn6yBiZJATEHGR0moC0V8rTHJhpwbTjOvMcLy05mTwbBDsjxq1CueTaoiQaoEMSiulC2ctTD/pLQ3QDFKwEQHNry/Zoti3KHgalyUve619Jvw9mymkzhnr8ie7heKE9Js+HotHmaPRBWRQEmdKAocOXbSsoBBXR/6FgtJivpLpoCkLNXstV12vtrdG5+0q3JbJ2EODgQYi1tutPD0daInh9o8WKRZulsCY3tWhORxzmP1CbYqGE+z7BP7ZcW54KECaQErmbzON3uhkDPBc/JQWOKJmWXTRX+yQUypX+It6u56z2lXLJy+a5iKSDJEpeHhw+TAWGoTwMQ+B6eOIQVJJg44aM67lORrRsNE6hgsso3kdfUpLKrl1K0lSrAyKAuG9fvYV4Mg77Pl0YqKoqdHQcmr7uteumD3XowaZAVJElTRWvFDVZDzK2qNJ4RFNGku88+ux7gvDes1sOVxQtEqfqpmPTu7lQNgt/UPjLzDa1CmJVhN56u8+Ix419Fy1U1TZVnl7ocN2OhWmnoz8YYmKb9rQcpBCg9G61zYbg+odepIH3n8FXFXrlpjZlfTXb0K5uW94ECP2IOGSE3IG2RYuhpdJoBpMbII5xIqFV7TTaAW2Zh1JZwqkZF510xh1Eq5Vcr79UxjDCyNGhbu2LHcQjbgOYqz0Pv0G0K27KQX+9Z//QAMqdn7zaWQbQ3Hzerc/Z6Or8eij1JK1PXrWSPSU+YqN89PqRHZIWkbZvlyIhcceRYCgUPLqft/tD0VBjcBRb+LdoHOInlTsPGaI+PDVsCJ8uCAYu7C1MmXdZyaR1lzn1xU+H4zvFiCZu3y5qEXEnnjkZioWe4+c+h4NJXFixH/sl/JbIJEJaCInp0ABY9jODRzP5/Fg+D1vX9L8B3o3lYU3fcA0//2V6ihTIBkT5teih/rJlV/IgecV+xwC7EbSmk4cK9xrORN6gu9KNLg8C91rBiosXBugo7r7+vobjbDavuDTceljesWv/wFxwj5qkSW8mFQL/OM0wtUXRgF5dLU2okFOvLFavpuDUZs1EIpdI0KyFfTLpL4Is+qfFYFCEAVEGcKM0TMOdafhg95jZZti/083xQGo6kJlkNKa0tfNThtatG+Inu0NHgR+WQ/JZ6beJsizy07gJAPnuJP02u5FEcVLAwJSCYOkIXHBLFSjTu4OywiT/beiSmGnJ/q8EAfoVdqMo2Yq/y59VbD0QhJ9JURleCK2e9y+2iSCTBqmHnNQNr/vrHfiRfwMb8Tf5oxl4HB7n7+Zce4rtZFUSIs3EJeuQb4ngEq9BGCKRImh3i9hlgrb2InhfoJL+Ved7fbDc5f8pFjh55JGTgZj/fueBn7AIQJMFLMpOHCiOA4wXS7wtpXO50e7u9MYw3H4MNwdOPnLMfzjMJnDbA/4Jw4CdDxw4wfyZCwIofBq6R7kYfhgabPlgYD87SEySQ84cJJeTzxGCcSgJmTwCPBtD1zccLzEeDTwUPObwxUoRFY/Vgc+nNtedIzf7mZVAjOrB2vOqDrpKN3y+JqqGobIWzaCzfFTLKzrMP8WHLwUNmL+iPZcbyeXaFU2LaxrtuGT6dlCFFt0yoBneMCwjFqo9qtt6SGHEQCdDKPjJ8hTkRi67bCT3Bb4/rt146ZT7idax0kXfIBlkMwKc8HmSw4u7wquPkfXtBiyGwGMsrWxbl2tWNVmSgwNNW3N9TltLOqk1xZg0tXHs+ObJa+SX6KbRUcbata6W5jZn47qrY0VJECVZDK1r751ksOOKa3+wxT9bf//y79mbbJIEMSsTyKog2CwrMAMq3jCkQLLZG/6bS0v+m2dLEIN4/7m3vBf+vnfv336ahY/z4Ppn8h/4rz72GIzecueHP28/ezbz4odk1Z8E/amSq8gOspvcSu7k2Z5IGIQYdBaRyjylpblbbPRqHL/SqEPc7UUzSHXutYsFKwX1pJbmPnTSnOcL9fxXgQtxaq5ShJT9P2sBIvjnzpzxzyG80mfOQPpJTWNhw99Yh/0pmQn6ZpUFgrr/cjjVIbfHx/iDMSUayDlyMJfCIEJU+3+1bAGGmyyRqWNhfzrpeRs8LxG1bce2I9C8Ores+vzgRe8T8P1dHXFBkTUZAlqo/btRSRKHvrQQCUIwJIOqPHKnk+3mTxPhcEiIfS/t/wK8qocX3Ib1j40XDtaurOD8PHuNjRCbJEme9JKNnG2zbj0FOhhCkZU8GEFWL1XKtpCGBnj6I4gcpFsTnDhWIJgT81iJAbu3djzshBNQcjirO/RdxF+6NquqDB73t9IlXa05HCH0XVWvfbOkN7c26XpTa7NOl+B5QQ7ZyVtQrFZzegB6HMoSl90RkAU6X3tW1RF1DMGH6POXdS7WxptGTl8+zs6xWWLglyBXQfpi3VET1ytXLFv0TFHiubtSLpY9LIEk0Wk8iTOx9s+ZrzP29Rkaqvf+twpM7O0VGGXdPbRbYANU7GtPtZgdTF06KrNZ3HqxSK2PdfeKYm/3W3YPpT2bTI1qPd1CR4J17wqrC7eQS/RUSSvyFIFG+qqnrMpanZGhJBtB7FW8il1xL1As3TgxBzA3sWWO0rmFtWqfyU+2OwPF6ubi6GBp0MtStnTz3iXGluitdHdDZsvE7v+s1f4rqVanyqU2o5Rbndh7P2P37715aY3OhUt1jq3VuZEJPBMLUdPBPcWGxn3jN1B6w3i9fXitxr++aZFhVhi76tzclsTl3k2LlC7CRzAzNj4DMDM+NgN3rNUW2OE93hXJzTvPbdti2nTxpj2HV2qH5XfYaRYnFunBOOjHEM/0Aod9ZKU64InLkUTIiGakTh0pLHY3QEN9R0ib9R89oksT/s1dvGRCem30C0NS7eNoc3MUfqxL1T5JfyjahOksWnsK/uuL/HaV3dDn0vZsH0BftnbW7YNdCgvE9dpZIwbKtq0hiBk0o8ePrF+oNHgOg+IvmJM1kkCNB8k2MosVVcPTRVQbtY0hkrx+XEJbJhB9jBeq/HGhXrg6cNFz20QIZkTcZtW/iRe2WI+66Ii+egLAKkKHt9LP3P7VE5lKx+n7Fl93MjB0DaXX4LPOzpRbACi4wIsZWaRPYkkE4CUbO4Y5kdEs35H13xNCYTBC9zyIdUA8IAWO0eyeA5Qe2HPPE5Q+cY//HTxxCsWgM3k+0Qn4X5Y7hYfL4nlJ9k9BZ+J8shMae6AqS3+W5JUdfm+4yZC+pihMsxR96X9mf3YkeJxjYGRgYADia6zxE+L5bb4ycLMwgMD1POXrMPr/3/9BLHXMDUAuBwMTSBQARbIMVQAAAHicY2BkYGBu+N/AEMNS8//v/38sdQxAERQgDAC18gdveJxjYWBgYH7JwMDC8P8vCwOIxoJrcIijYQDhYgOtAAAAAAAAAHYBJAHEAfQCeAKgArYDDgOKA8oD9gSqBQ4FYgW8BhIGagb8eJxjYGRgYBBmqGBgYwABJiDmAkIGhv9gPgMAFo0BqAB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxtjd0WwTAQhDOUREv91Gu46COFRLNKUtpVPL04fq7Mzew3c/aMGIi3UvFfBQYYIsEIY0goTJAiwxQz5JhjgSVWKLAWuMmOqWbt8z4Yew/smA4Rk1O4WNVYaoOvSnkg7bvA6uPlyNDDkaoC97xzVpqYO9ZZfTy1LvBO+2ryLUt5ju1Wh/xGvtqS3fT29Z1+0V+z36l9ajQ1EeNUUts9C/EEa2o9GQAA') format('woff'),
+  url('iconfont.ttf?t=1531445975182') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1531445975182#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tuikuan:before { content: "\e636"; }
+
+.icon-wodeyouhuijuan:before { content: "\e7ee"; }
+
+.icon-more:before { content: "\e637"; }
+
+.icon-peisong1:before { content: "\e6c0"; }
+
+.icon-jiantou:before { content: "\e6a5"; }
+
+.icon-jiantou1:before { content: "\e65e"; }
+
+.icon-dizhi:before { content: "\e60d"; }
+
+.icon-gouwuche:before { content: "\e655"; }
+
+.icon-dianhua:before { content: "\e611"; }
+
+.icon-klmshoucang:before { content: "\e620"; }
+
+.icon-gouwuche1:before { content: "\e631"; }
+
+.icon-qianbao:before { content: "\e630"; }
+
+.icon-xingbie-weizhi:before { content: "\e633"; }
+
+.icon-xingbie-nv:before { content: "\e634"; }
+
+.icon-xingbie-nan:before { content: "\e635"; }
+
+.icon-daipingjia:before { content: "\e60b"; }
+
+.icon-kefu:before { content: "\e601"; }

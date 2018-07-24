@@ -1,0 +1,61 @@
+/* pages/redpage/redpage.wxss */
+page{
+  background-image: url('http://cake.chaorenlaila.com/MiniAppImg/background/redPageBackground.jpg');
+  background-size: 100%;
+  color: #929292;
+}
+.discountTitle text{
+  display: block;
+  text-align: center;
+}
+.sloganGolden{
+  padding-top: 75rpx;
+  color: #debf7f;
+  font-size: 38px;
+}
+.sloganGery{
+  color: #929292;
+  margin-top: 20rpx;
+}
+.discountMain{
+  margin-top: 55rpx;
+  width: 605rpx;
+  max-height: 800rpx;
+  overflow-y: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.discountItem{
+  width: 600rpx;
+  border: 1rpx solid #f7f7f7;
+  border-top: 10rpx solid #dcbe7e;
+  margin-bottom: 20rpx;
+  box-shadow: 2px 2px 3px #AAAAAA;
+  background-color: #FFFFFF;
+  padding: 25rpx 0 25rpx 0;
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+.reduceAmount{
+  width: 250rpx;
+  color: #dcbe7e;
+  border-right: 1px dashed #debf7f;
+}
+.reduceAmount text:first-child{
+  font-size: 22px;
+}
+.reduceAmount text:nth-child(2){
+  font-size: 36px;
+}
+.minAmount{
+  width: 350rpx;
+}
+.minAmount view:first-child{
+  color: #dcbe7e;
+  font-size: 16px
+}
+.minAmount view:last-child{
+  font-size: 12px;
+  white-space: nowrap;
+}

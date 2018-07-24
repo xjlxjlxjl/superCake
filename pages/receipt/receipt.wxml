@@ -1,0 +1,65 @@
+<!--pages/receipt/receipt.wxml-->
+<view>
+  <view class='orderList'>
+    <view class='orderChild' wx:for="{{ orderList }}" wx:key="unique" wx:for-index="key">
+      <view class='locationTime'>
+        <view>
+          <text>客户名称：</text>
+          <text>{{ item.aName }}</text>
+        </view>
+        <view>
+          <text>地点：</text>
+          <text>{{ item.aArea + item.aDetail }}</text>
+        </view>
+        <view>
+          <text>送达时间：</text>
+          <text>{{ item.timeSlot }}</text>
+        </view>
+      </view>
+      <view class='goodsList'>
+        <view>商品（{{ item.oitems.length }}）</view>
+        <view class='goodsInfo'>
+          <text>备注：</text>
+          <text>{{ item.info }}</text>
+        </view>
+        <view class='goods' wx:for="{{ item.oitems }}" wx:key="unique" wx:for-index="index" wx:for-item="val">
+          <text>{{ val.name }}</text>
+          <text>X{{ val.fCount }}</text>
+        </view>
+      </view>
+      <!--4 已送达 5已完成 6已取消  -->
+      <view class='operation' wx:if="{{ item.oStateId == 4 }}">
+        <button class='receipt' disabled="true">已完成</button>
+      </view>
+      <view class='operation' wx:elif="{{ item.oStateId == 6 }}">
+        <button class='receipt' disabled="true">已取消</button>
+      </view>
+      <view class='operation' wx:else>
+        <!--接单  -->
+        <button wx:if="{{ item.postAStateId == 1 }}" 
+                class='receipt' 
+                bindtap='reject' 
+                data-orderId='{{ item.orderId }}
+                data-key='postAStateId'
+                data-value='2'>接单</button>　
+        <button wx:if="{{ item.postAStateId == 1 }}" 
+                class='receipt' 
+                bindtap='receipt' 
+                data-orderId='{{ item.orderId }}'
+                data-key='oStateId'
+                data-value='6'>驳回</button>
+        <!--通过  -->
+        <button wx:if="{{ item.postAStateId == 2 }}" 
+                class='callBB' 
+                bindtap='call' 
+                data-phoneNumber='{{ item.aPhone }}'>拨打电话</button>　
+        <button wx:if="{{ item.postAStateId == 2 }}" 
+                class='receipt' 
+                bindtap='reject' 
+                data-orderId='{{ item.orderId }}
+                data-key='oStateId'
+                data-value='4'>已送达</button>
+      </view>
+    </view>
+  </view>
+</view>

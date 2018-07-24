@@ -1,0 +1,35 @@
+<!--address.html  -->
+<view>
+  <view wx:if="{{ addressList.length > 0 }}">
+    <view class='letter' style='background-image: url("http://www.chaorenbox.com/canFly/letter.png");'></view>
+    <view class='addressContent'>
+      <scroll-view class='addressList' scroll-x="true" wx:for="{{ addressList }}" wx:for-index="key" wx:key="unique">
+        <view class='delArea' bindtap='delAddress' data-birthdayId='{{ item.birthdayId }}'>
+          <image src='/images/delete.png' />
+        </view>
+        <view class='nameArea'>
+          <text>{{ item.name }}</text>
+          <!-- <text class='addressDefault' wx:if="{{ item.isDef }}">默认</text> -->
+        </view>
+        <view class='addressArea'>
+          <text>生日:{{ item.birthday }}</text>
+          <!-- <text>{{ item.area+item.detail }}</text> -->
+        </view>
+        <navigator 
+          url='/pages/birthday/edit/edit?birthdayId={{ item.birthdayId }}&name={{ item.name }}&date={{ item.birthday }}'>
+          <view class='editArea'>
+            <image src='/images/edit.png' />
+          </view>
+        </navigator>
+        <view class='clearfix'></view>
+      </scroll-view>
+      <view class='clearfix'></view>
+    </view>
+  </view>
+  <view class='addressNull' wx:else>
+    <image src='../../images/null/cake.png'></image>
+  </view>
+  <view  class='addressBtn'>
+    <button bindtap='addAddress'>+新建生日</button>
+  </view>
+</view>

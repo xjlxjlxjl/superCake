@@ -1,0 +1,187 @@
+<!--pages/checkOrder/checkOrder.wxml-->
+<view class='addressList' wx:if="{{ isAddressSelect && !isTime }}">
+  <view class='addressTop' bindtap="addressToggle">
+    <icon class='icon iconfont icon-jiantou'></icon>
+    <text style='font-size:17px;'> 返回</text>
+  </view>
+  <view style='height: 30px;'></view>
+
+  <radio-group class="radio-group" bindchange="addressChange">
+    <label wx:for="{{ address }}" wx-index-item="index" wx:key="unique">
+      <view class='nameArea'>
+        <radio value="{{ item.addId }}" color='#ec4849' checked="{{ item.checked }}"/>
+      </view>
+      <view class='addressArea'>
+      <view>
+        <text>{{ item.name }}</text>
+      </view>
+        <text>{{ item.phone }}</text>
+        <text>{{ item.area+item.detail }}</text>
+      </view>
+      <view class='clearfix'></view>
+    </label>
+  </radio-group>
+
+  <view style='height: 50px;'></view>
+  <navigator class='addressBottom' url='/pages/address/add/add' open-type='navigate'>
+    <button class='addAddress'>+ 添加收货地址</button>
+  </navigator>
+</view>
+
+<view wx:elif="{{ !isAddressSelect && isTime }}">
+  <view class='scrollTop' bindtap='timeSlotToggle'>取消</view>
+  <view class='timeContent' wx:for="{{ timeSlot }}" wx:key="unique" wx:for-index="key">
+    <view class='morning'>
+      <text wx:if="{{ key == 1 }}">中午</text>
+      <text wx:elif="{{ key == 2 }}">下午</text>
+      <text wx:elif="{{ key == 3 }}">晚上</text>
+      <text wx:elif="{{ key == 4 }}">凌晨</text>
+      <text wx:else>上午</text>
+    </view>
+    <view class='morningContent'>
+      <view class='{{ val.disabled?"detailBoxDisabled":"detailBox" }}' 
+            wx:for="{{ item }}" 
+            wx:key="unique" 
+            wx:for-index="index" 
+            wx:for-item="val"
+            data-key='{{ key }}'
+            data-index='{{ index }}'
+            data-click='{{ val.disabled }}'
+            bindtap='choice'
+      >{{ val.time }}</view>
+    </view>
+  </view>
+</view>
+<view class='loginModal' wx:elif="{{ loginModal }}" catchtouchmove="noTouch">
+  <text class='loginModalText'>请登录后再做购买</text>
+  <button open-type="getUserInfo" 
+    bindgetuserinfo="getUserInfo"
+    class="loginModalBtn">登录</button>
+</view>
+<view wx:else>
+  <!--收货地址  -->
+  <view class='addressList' bindtap='addressToggle' id='false' wx:if="{{ address.length > 0}}">
+    <label>
+      <view class='nameArea'>
+        <text>{{ selectAddress.name }}</text>
+      </view>
+      <view class='addressArea' style='width: 500rpx;'>
+        <text>{{ selectAddress.phone }}</text>
+        <text>{{ selectAddress.area+selectAddress.detail }}</text>
+      </view>
+      <view class='editArea'>
+        <icon class='icon iconfont icon-jiantou1'></icon>
+      </view>
+      <view class='clearfix'></view>
+    </label>
+  </view>
+  <navigator wx:else url='/pages/address/add/add' open-type='navigate'>
+    <view class='addressNull'>+ 添加收货地址</view>
+  </navigator>
+
+  <view class='orderLetter' style='background-image: url("http://www.chaorenbox.com/canFly/letter.png");'></view>
+  <!--product  -->
+  <view class='productList'>
+    <view class='checkGoodsItem' wx:for="{{ product }}" wx:key="unique">
+      <view class='checkGoodsImg'>
+        <image src='{{ path + item.info.logo[0] }}' /> 
+      </view>
+      <view>
+        <text class='title'>{{ item.goodsName }}</text>
+         <text class='info'>{{ item.info.peopleCount }}　{{ item.info.info }}　餐具 x{{ item.count }}　　数量 x{{ item.count }}</text> 
+        <text class='price'>￥ {{ item.info.price*item.count }}</text>
+      </view>
+    </view>
+  </view>
+  <view class='orderLetter clearfix' style='background-image: url("http://www.chaorenbox.com/canFly/letter.png");'></view>
+  <view style='color: #ec4849;font-size: 12px;text-align: center;padding-top:20rpx;'> * 温馨提示：2磅蛋糕配送8人份餐具，3磅蛋糕配送15人份餐具 </view>
+  <view style='color: #ec4849;font-size: 12px;text-align: center;'> 额外购买餐具 一套为5人份 </view>
+  <view class='distribution' style="border-top: 1px solid #DDDDDD;padding-top:30rpx;">
+    <picker mode="date" value="{{date}}" start="{{ startTime }}" bindchange="bindDateChange">
+      <text>送达日期：</text>
+      <text class='appointmentTime'>{{ date }}</text>
+    </picker>
+  </view>
+  <view class='distribution'>
+    <view class='timeSlot' bindtap='timeSlotToggle'>
+      <text>请选择时间段</text>
+      <text class='appointmentTime'>{{ timeSlotSelect }}</text>
+    </view>
+  </view>
+  <!--优惠券  -->
+  <!-- <view class='orderLetter' style='background-image: url("http://www.chaorenbox.com/canFly/letter.png");'></view> -->
+  <view class='Coupon' wx:if="{{ !collageId && couponList.length > 0 }}">
+    <picker bindchange="bindPickerChange" range="{{ couponList }}" range-key="couponName">
+      <view class="picker">
+        <text class='couponTitle'>优惠卷</text>
+        <input class='couponInput appointmentTime' 
+              disabled='true' 
+              placeholder='选择优惠券' 
+              type="text" 
+              value='{{ couponSelect.name }}' />
+      </view>
+      <view class='clearfix'></view>
+    </picker>
+  </view>
+  <view class='invoiceInput'>
+    <text>额外餐具套数</text>
+    <view class='numButton'>
+      <view class='numDel' data-Calculation='1' bindtap="tableware">-</view>
+      <view class='numText'>{{ tablewareCount }}</view>  
+      <view class='numAdd' data-Calculation='2' bindtap="tableware">+</view>
+    </view>
+  </view>
+  <view class='invoiceInput'>
+    <text>祝福语：</text>
+    <input type="text" bindblur="greetingsChange" 
+           bindconfirm="greetingsChange" value='{{ greetings }}'
+           placeholder='请在此处填写祝福语' style='border: none;' />
+  </view>
+  <!-- <view class='invoice'>
+    <checkbox-group bindchange="invoice">
+      <label class="radio">
+        <checkbox checked="{{ invoice }}"/>
+        <text>需要开具发票</text>
+        <view class='clearfix'></view>
+      </label>
+    </checkbox-group>
+    <view class='invoiceInput' wx:if="{{ invoice }}">
+      <text>发票抬头</text>
+      <input type="text" bindinput="invoiceTitleChange" value='{{ invoiceTitle }}' />
+    </view>
+    <view class='invoiceInput' wx:if="{{ invoice }}">
+      <text>纳税人识别号</text>
+      <input type="text" bindinput="invoiceContentChange" value='{{ invoiceContent }}' maxlength='20' />
+    </view>
+  </view> -->
+  <view class='invoice'>
+    <text>备注：</text>
+    <textarea bindblur="bindTextAreaBlur" bindconfirm="bindTextAreaBlur" value='{{ info }}' />
+  </view>
+  <!-- 支付 -->
+  <view class='payMent'>
+    <button class='payMentBtn' bindtap='pay'>支付</button>
+     <text class='payMentText'>合计 ￥</text>{{ amount - couponSelect.reduceAmount }} 
+     <text wx:if="{{ couponSelect.reduceAmount != 0 }}" 
+           style='text-decoration: line-through; color:#999; font-size:10px;'>{{ amount }}</text>
+  </view>
+
+  <view class='ft' style='background-color: #FFFFFF;'>
+    <view class='ft-links'>
+      <text></text>
+        <navigator url="/pages/aboutUs/aboutUs">关于我们</navigator>
+      <text style='color:#DDDDDD;'>|</text>
+        <navigator url="/pages/promise/promise">服务承诺</navigator>
+      <text style='color:#DDDDDD;'>|</text>
+        <button class='callmeBB' open-type="contact">联系我们</button>
+      <text style='color:#DDDDDD;'>|</text>
+          <navigator url="/pages/notice/notice">购买须知</navigator>
+      <text></text>
+    </view>
+    <view class='ft-copyright'>
+      <image src='/images/icon.png'></image>
+    </view>
+  </view>
+  <view style='height: 40px;'></view>
+
+</view>

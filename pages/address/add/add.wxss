@@ -1,0 +1,26 @@
+.addDetail{
+  padding: 20rpx 0 20rpx 35rpx;
+}
+.inputBlock{
+  font-size: 14px;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 30rpx;
+  color: #726964;
+}
+.checkBoxBlock {
+  padding: 30rpx;
+  font-size: 14px;
+  color: #726964;
+  text-align: center;
+}
+.save{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  background-color: #ca0c16;
+  border-radius: 0;
+  color: #FFFFFF;
+  height: 50px;
+  line-height: 50px;
+}

@@ -1,0 +1,64 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/timeLimit/timeLimit",
+    "pages/allcake/allcake",
+    "pages/redpage/redpage",
+    
+    "pages/goodsType/goodsType",
+    "pages/detail/detail",
+    "pages/shoppingcar/shoppingcar",
+    "pages/checkOrder/checkOrder",
+    "pages/logs/logs",
+
+    "pages/user/user",
+    "pages/order/order",
+    "pages/birthday/birthday",
+    "pages/birthday/add/add",
+    "pages/birthday/edit/edit",
+    "pages/collection/collection",
+    "pages/discount/discount",
+    "pages/address/address",
+    "pages/address/add/add",
+    "pages/address/edit/edit",
+    "pages/promise/promise",
+    "pages/aboutUs/aboutUs",
+    "pages/notice/notice",
+    "pages/receipt/receipt"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "超人不会飞",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#333333",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "images/bottomBar/index.png",
+      "selectedIconPath": "images/bottomBar/indexActive.png"
+    },{
+      "pagePath": "pages/allcake/allcake",
+      "text": "全部蛋糕",
+      "iconPath": "images/bottomBar/allCake.png",
+      "selectedIconPath": "images/bottomBar/allCakeActive.png"
+    },{
+      "pagePath": "pages/timeLimit/timeLimit",
+      "text": "限时抢购",
+      "iconPath": "images/bottomBar/timelimit.png",
+      "selectedIconPath": "images/bottomBar/timelimitActive.png"
+    },{
+      "pagePath": "pages/user/user",
+      "text": "我的",
+      "iconPath": "images/bottomBar/user.png",
+      "selectedIconPath": "images/bottomBar/userActive.png",
+      "pageTum": "redirect"
+    }]
+  }
+}

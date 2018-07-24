@@ -1,0 +1,26 @@
+<view>
+  <view wx:if="{{ myCollection.length > 0 }}">
+    <view class='letter'></view>
+
+    <view class='addressContent'>
+      <scroll-view class='addressList' scroll-x="true" wx:for="{{ myCollection }}" wx:for-index="key" wx:key="unique">
+        <view class='nameArea'>
+          <image src='{{ path + item.logo }}' />
+        </view>
+        <view class='addressArea'>
+          <text>{{ item.name }}</text>
+        </view>
+        <view class='delArea'
+              data-cId='{{ item.cId }}'
+              bindtap='delCollection'>
+          <image src='/images/delete.png' />
+        </view>
+        <view class='clearfix'></view>
+      </scroll-view>
+      <view class='clearfix'></view>
+    </view>
+  </view>
+  <view class='collectionNull' wx:else>
+    <image src='/images/null/collection.png' />
+  </view>
+</view>

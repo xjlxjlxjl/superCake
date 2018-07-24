@@ -1,0 +1,11 @@
+module.exports = {
+  // basePath: 'https://mall.chaorenlaila.com',
+  // basePath: 'http://127.0.0.1:8080',
+  basePath: 'http://192.168.0.133:8080',
+  // basePath: 'http://192.168.0.100:8080',
+  shopId: 95,
+  headerParams: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'wxa_sessionid': wx.getStorageSync('sessionKey')
+  },
+}

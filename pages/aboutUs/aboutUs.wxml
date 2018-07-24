@@ -1,0 +1,4 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<image src='http://www.chaorenbox.com/canFly/longPic/aboutUs.jpg' 
+      mode='widthFix'
+      style='width: 750rpx;'></image>

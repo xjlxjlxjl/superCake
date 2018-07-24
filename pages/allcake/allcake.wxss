@@ -1,0 +1,8 @@
+/* pages/allcake/allcake.wxss */
+.swiperBanner{
+  height: 487rpx;
+  width: 750rpx;
+}
+.swiperBanner image{
+  width: 100%;
+}

@@ -1,0 +1,101 @@
+<!--index.wxml-->
+<view>
+  <scroll-view scroll-y='true 'style="height:{{height}}px" bindscrolltolower='lower'>
+    <!--假装能定位的地址栏  -->
+    <view class='getLocation'> 
+      <!-- <text class='colorPink'>准时达</text> -->
+      <image src='/images/onTime.png' style='width: 80px;height: 25px;'></image>
+      <icon class='locationIcon icon iconfont icon-dizhi'></icon>
+      <text class='locationName'>{{ locationName }}</text> 
+    </view>
+    <!-- 轮播 -->
+    <view class='swiper'>
+      <swiper class='swiperMain' indicator-dots="{{ true }}" autoplay="{{ true }}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}" wx:key="unique">
+          <swiper-item>
+            <image src="{{ item }}" class="slide-image"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 滑块 -->
+    <view class='scroll'>
+      <scroll-view class="classificationSlider" scroll-x="true" bindscroll="scroll" style="width: 100%">
+        <view class="sliderSubclass" wx:for="{{ sliderSubclass }}" wx:for-index="key" wx:key="unique">
+          <view bindtap='getTypeList' id='{{ key }}' class='sliderChild'>
+            <image src='{{ item.logo }}' class='sliderImage'/>
+          </view>
+          <!-- <text class='sliderChildText'>{{ item.name }}</text> -->
+        </view>
+      </scroll-view>
+      <image class='process' src='/images/index/downScroll.png'></image>
+      <!--领取优惠券  -->
+      <scroll-view class="classificationSlider" scroll-x="true" bindscroll="scroll" style="width: 100%">
+        <view class="sliderSubclass" wx:for="{{ discount }}" wx:key="unique">
+          <navigator url='/pages/redpage/redpage?rPageId={{ item.rPageId }}'>
+            <view class='sliderChild'>
+              <view class='discountText'>
+                <text>￥{{ item.items[0].reduceAmount }}</text>
+                <text>立即领取</text>
+              </view>
+              <image src='/images/discount.png' class='sliderImage'/>
+            </view>
+          </navigator>
+          <!-- <text class='sliderChildText'>{{ item.title }}</text> -->
+        </view>
+      </scroll-view>
+      <!--购物津贴  -->
+      <!-- <view class='interests'>
+        <view class='interestsClhild'>
+          <view class='allowance'>
+            <text>ALLOWANCE</text>
+            <text>购物津贴</text>
+            <text>仅限6.1-6.20</text>
+          </view>
+          <view class='subtraction'>
+            <text>全场满300减30</text>
+            <text>可累计叠加</text>
+          </view>
+        </view>
+      </view> -->
+      <!--全场满减  -->
+      <view class='FullSub' wx:if="{{ GiftGoods.length > 0 }}">
+        <text class='everyDayExcellent'>拼团</text>
+        <view class='FullSubChild'>
+          <!-- <view class='FullAllow'>
+            <text>GIFT</text>
+            <text>全场满赠</text>
+            <text>单笔实付满即赠</text>
+            <text>仅限6.1-6.3</text>
+          </view> -->
+          <view class='FullGoods'>
+            <navigator wx:for="{{ GiftGoods }}" 
+              wx:key="unique"
+              url='/pages/detail/detail?goodsName={{ item.name }}&gId={{ item.gId }}&Collage=true&collageId={{ item.collageId }}' 
+              open-type="navigate">
+              <text class='fullPrice'>已拼团 {{ item.momentCount }} 人</text>
+              <image src='{{ item.logo }}'></image>
+              <text>{{ item.name }}</text>
+              <text style='color:#ff0049;'>限{{ item.count }}名</text>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='excellent'>
+      <text class='everyDayExcellent'>HOT 热销蛋糕</text>
+      <view class='excellentContent'>
+        <view class='excellentAssembly' wx:for="{{ excellentAssembly }}" wx:key="unique">
+          <navigator class='excellentChild' 
+            url='/pages/detail/detail?goodsName={{ item.name }}&gId={{ item.gId }}' 
+            open-type="navigate">
+            <image src="{{ item.logo }}" class="excellentImage"/>
+            <text class='excellentChildFirst'>{{ item.name }}</text>
+            <text>{{ item.price }}</text>
+            <text>{{ item.note }}</text>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

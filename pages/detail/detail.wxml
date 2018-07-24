@@ -1,0 +1,96 @@
+<!--pages/detail/detail.wxml-->
+<view>
+  <view class='swiper'>
+    <swiper class='swiperMain' style='min-height: 900rpx' 
+            indicator-dots="{{ false }}" autoplay="{{ true }}" interval="3000" duration="500">
+      <block wx:for="{{ goodsInfo.logo }}" wx:key="unique">
+        <swiper-item>
+          <image src="{{ basePath + item }}" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 商品详情 -->
+  <view class='goodsDetail'>
+    <text class='detailChineseName'>{{ chineseName }} </text>
+    <text class='detailEnglishName'>{{ englishName }}</text>
+    <view class='goodsPrice'>
+      <text>￥{{ displayPrice }}</text>
+    </view>
+    <view class='goodsFreight'>
+      <text>运费：免运费</text>
+      <text>销量：{{ sales }}份</text>
+      <text></text>
+      <text></text>
+    </view>
+  </view>
+
+  <view style='background-color: #e5e5e533;padding: 8rpx 0 8rpx 0;'>
+    <image mode='widthFix' class='goodsTorBar' src='{{ path }}/parts/detailBar.png'></image>
+  </view>
+  
+  <view class='longPicContent'>
+    <image mode='widthFix' wx:for="{{ goodsInfo.detailedUrl }}" 
+          wx:key="unique" src='{{ basePath + item }}' 
+          style="{{ detailonload ? 'display: block;' : 'display: none;' }}" bindload="imageLoad"></image>
+
+    <image wx:if="{{ !detailonload }}" mode='widthFix' src='{{ path }}/parts/onload.gif'></image>
+    <image mode='widthFix' src='{{ path }}/detailImg/cook.png'></image>
+    <image mode='widthFix' src='{{ path }}/detailImg/cakeSize.png'></image>
+    <image mode='widthFix' src='{{ path }}/detailImg/tableware.png'></image>
+    <image mode='widthFix' src='{{ path }}/detailImg/promise.png'></image>
+  </view>
+
+  <view wx:if="{{ curtain }}" class='curtain'></view>
+  <view wx:if="{{ curtain }}" class='modal'>
+    <view class='modalHead'>
+      <image mode="widthFix" src='{{ basePath + goodsInfo.logo[0] }}'></image>
+      <view class="modalGoodsName">
+        <view>
+          <text>{{ goodsName }}</text>
+          <text>价格：￥{{ goodsInfo.price }}</text>
+        </view>
+        <image src='/images/del.png' style='width: 20px;height: 20px;' 
+               data-modalStatus="0" bindtap='modalDisplay'></image>
+      </view>
+    </view>
+    <view class='modalContent'>
+      <view class='modalContentTitle'>
+        <text>规格：</text>
+      </view>
+      <view class='modalContentInfo'>
+        <view class='goodsInfoItem {{ item.active ?"goodsInfoItemActive":"" }}' wx:for="{{ info }}" 
+              wx:key="unique" wx:for-index="key"
+              id='{{ key }}' bindtap='goodsClick'>
+          <text>{{ '适合 ' + item.peopleCount + ' ￥' + item.price}}</text>
+        </view>
+      </view>
+      <view class='modalCount'>
+        <view class='modalContentTitle'>
+          <text>购买数量：</text>
+        </view>
+        <view class='numButton'>
+          <view class='numAdd' data-type='1' bindtap='changeCount'> + </view>
+          <view class='numText'>{{ count }}</view>
+          <view class='numDel' data-type='2' bindtap='changeCount'> - </view>
+        </view>
+      </view>
+    </view>
+    <view class='modalBtn'>
+      <button wx:if="{{ modalStatus == 1 }}" bindtap='addShopcar'>确定</button>
+      <button wx:elif="{{ modalStatus == 2 }}" bindtap='payment'>确定</button>
+      <button wx:elif="{{ modalStatus == 3 }}" bindtap='addCollage'>确定</button>
+    </view>
+  </view>
+  <button class='backTopBtn' bindtap='backTop' style='background-image: url({{ path }}/detailImg/backTop.png)'></button>
+  <view style='height: 50px;'></view>
+  <view wx:if="{{ isCollage }}" class='joinCar'>
+    <button data-modalStatus='3' bindtap='modalDisplay' class='RushToBuy' style='width: 750rpx;'>立即抢购</button>
+  </view>
+  <view wx:else class='joinCar'>
+    <button bindtap='goShoppingCar'><icon class='icon iconfont icon-gouwuche'></icon></button>
+    <button data-modalStatus='1' bindtap='modalDisplay'>加入购物车</button>
+    <button data-modalStatus='2' bindtap='modalDisplay'>立即购买</button>
+  </view>
+</view>

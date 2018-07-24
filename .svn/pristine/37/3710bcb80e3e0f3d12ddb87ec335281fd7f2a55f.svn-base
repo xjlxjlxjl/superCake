@@ -1,0 +1,37 @@
+<!--pages/receipt/receipt.wxml-->
+<view>
+  <view class='orderList'>
+    <view class='orderChild' wx:for="{{ orderList }}" wx:key="unique" wx:for-index="key">
+      <view class='locationTime'>
+        <view>
+          <text>客户名称：</text>
+          <text>{{ item.aName }}</text>
+        </view>
+        <view>
+          <text>地点：</text>
+          <text>{{ item.aArea + item.aDetail }}</text>
+        </view>
+        <view>
+          <text>送达时间：</text>
+          <text>{{ item.timeSlot }}</text>
+        </view>
+      </view>
+      <view class='goodsList'>
+        <view>商品（{{ item.oitems.length }}）</view>
+        <view class='goodsInfo'>
+          <text>备注：</text>
+          <text>{{ item.info }}</text>
+        </view>
+        <view class='goods' wx:for="{{ item.oitems }}" wx:key="unique" wx:for-index="index" wx:for-item="val">
+          <text>{{ val.name }}</text>
+          <text>X{{ val.fCount }}</text>
+        </view>
+      </view>
+      <view class='operation'>
+        <button class='callBB' bindtap='call' data-phoneNumber='{{ item.aPhone }}'>拨打电话</button>　
+        <button class='reject' bindtap='reject' data-orderId='{{ item.orderId }}'>驳回</button>
+        <button class='receipt' bindtap='receipt' data-orderId='{{ item.orderId }}'>完成</button>
+      </view>
+    </view>
+  </view>
+</view>

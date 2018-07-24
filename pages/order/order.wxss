@@ -1,0 +1,151 @@
+page{
+  background-color: #eeeeee;
+}
+.orderTab{
+  position: fixed;
+  top: 10rpx;
+  z-index: 999;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #FFFFFF;
+  /* margin-top: 10rpx; */
+  font-size: 14px;
+}
+.orderTab > view{
+  margin: 0 20rpx;
+  padding: 20rpx 0;
+}
+.orderTabActive{
+  border-bottom: 2px solid #ea3a3e;
+}
+.orderContent > view{
+  margin-top: 10rpx;
+  background-color: #FFFFFF;
+  font-size: 14px;
+}
+.orderDetailGoodsItem image,
+.orderContent image{
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin-right: 20rpx;
+}
+.orderHead,
+.orderStatus,
+.goodsList{
+  padding: 20rpx;
+  color: #AAAAAA;
+  /* border-top: 0.5px solid #eeeeee; */
+  border-bottom: 0.5px solid #eeeeee;
+}
+.orderStatus{
+  display: flex;
+  align-items: flex-end;
+  line-height: 1.5;
+}
+.orderStatus > view > text{
+  display: block;
+}
+orderStatus > view:last-child{
+  width: 250rpx;
+}
+.orderOptions{
+  padding: 20rpx;
+}
+.orderOptions > button{
+  font-size: 14px;
+  background-color: #ea3a3e;
+  color: #FFFFFF;
+  display: inline-block;
+  float: right;
+  white-space: nowrap;
+}
+.goodsList > view{
+  padding: 20rpx;
+  line-height: 1.4;
+}
+.goodsName{
+  display: block;
+  color: #000000;
+  padding-top: 20rpx;
+}
+
+.getDetail{
+  color: #ea3a3e;
+  border: 1px solid #ea3a3e;
+  font-size: 12px;
+  padding: 3px;
+  display: inline-block;
+  float: right;
+}
+/**
+ * 订单详细
+ */
+.flex-baseline{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10rpx;
+}
+.flex-baseline > text:first-child{
+  white-space: nowrap;
+  margin-right: 15px;
+}
+.flex-baseline > text:nth-child(2){
+  text-align: right;
+}
+.orderDetailTop{
+  margin-top: 5px;
+  color: #AAAAAA;
+  display: flex;
+  padding: 5px 15px;
+  font-size: 16px;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+}
+.orderDetailContent{
+  margin-top: 5px;
+  background-color: #FFFFFF;
+  padding: 20rpx;
+  line-height: 1.4;
+  font-size: 14px; 
+  color: #666666; 
+}
+.orderDetailPay{
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 20rpx;
+}
+.orderDetailContentPay{
+  font-size: 22px;
+  color: #000000;
+}
+.orderDetailGoods{
+  border-top: 1px solid #eeeeee;
+  font-size: 14px;
+  background-color: #FFFFFF;
+}
+.lineClientService{
+  font-size: 14px;
+  background-color: #FFFFFF;
+  color: #666666;
+  border-radius: 0;
+  text-align: left;
+}
+.transactionEnd{
+  padding: 15rpx;
+  font-size: 14px;
+  align-items: center;
+  display: flex;
+}
+.transactionClose{
+  background-color: #AAAAAA;
+  width: 50rpx;
+  display: inline-flex;
+  padding: 15rpx;
+  border-radius: 15rpx;
+  margin-right: 15rpx;
+}
+.transactionCloseText{
+  line-height: 14px;
+}

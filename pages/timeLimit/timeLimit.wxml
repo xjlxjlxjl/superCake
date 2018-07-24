@@ -1,0 +1,37 @@
+<view>
+  <scroll-view scroll-y='true 'style="height:{{height}}px" bindscrolltolower='lower'>
+  <swiper autoplay="false" 
+          interval="5000" 
+          duration="1000"
+          class='swiperBanner'>
+    <block wx:for="{{ banner }}" wx:key="unqiue">
+      <swiper-item class="banner">
+        <image src="{{ item }}" mode='widthFix' />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='goodsTitle'>
+    <image mode='widthFix' src='{{ path }}/title/timeLimitBuy.png'></image>
+  </view>
+  <view class='goodscontent'>
+    <navigator class='goodsItem' 
+               wx:for="{{ goodsList }}" 
+               wx-index-item="index"
+               wx:key='unique'
+               url='/pages/detail/detail?goodsName={{ item.name }}&gId={{ item.gId }}&Collage=true&collageId={{ item.collageId }}'>
+      <image mode='widthFix' class='goodsImg' src='{{ basePath + item.logo }}'></image>
+      <view class='goodsTips'>
+        <text style='font-size: 12px; white-space: nowrap;'>剩余：{{ countDownList[index].day+'天'+countDownList[index].hou+'时'+countDownList[index].min+'分'+countDownList[index].sec }}秒</text>
+      </view>
+      <view class='namespace'>
+        <text class='chineseName'>{{ item.chineseName }}</text>
+        <text class='englishName'>{{ item.englishName }}</text>
+        <view class='priceBuy'>
+          <text>￥{{ item.cPrice }}</text>
+          <icon class='icon iconfont icon-gouwuche1'></icon>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,227 @@
+/* pages/checkOrder/checkOrder.wxss */
+.orderLetter{
+  height: 3px;
+  background-size: 100%;
+  background-position: center;
+}
+.goodsItem {
+  display: flex;
+  padding: 30rpx 30rpx 0 0;
+  border-bottom:1px solid #DDDDDD;
+}
+.goodsItem > view{
+  padding: 10rpx;
+}
+.goodsItem > view >image{
+  width: 150rpx;
+  height: 150rpx; 
+}
+.goodsItem > view > text{
+  display: block;
+  line-height: 1.6;
+}
+.goodsItem > view > text:first-child{
+  font-size: 16px;
+}
+.goodsItem > view > text:nth-child(2){
+  font-size: 12px;
+  color: #939393;
+}
+.goodsItem > view > text:last-child{
+  font-size: 16px;
+  color: #ec4849;
+}
+
+/* 地址 */
+.addressList{
+  font-size: 14px;
+  border-top: 1px solid #DDDDDD;
+  /* border-bottom: 1px solid #DDDDDD; */
+}
+.addressList .radio-group .addressArea{
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.addressList .nameArea{
+  width: 110rpx;
+  line-height: 3;
+  text-align:center;
+  /* line-height: 1.8; */
+  padding: 10px 0px 10px 10px;
+  float: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.addressList .nameArea text:first-child{
+  display: block;
+}
+.addressList .addressArea{
+  width: 600rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  padding: 10px 0px 10px 0px;
+  line-height: 1.8;
+  float: left;
+}
+.addressList .addressArea text:first-child{
+  display: block;
+}
+.addressList .editArea{
+  float: left;
+  width: 100rpx;
+  height: 70px;
+  line-height: 70px;
+  text-align: right;
+  color: grey;
+}
+/* 地址为空 */
+.addressNull{
+  height: 80px;
+  line-height: 80px;
+  color: #ec4849;
+  text-align: center;
+  font-size: 16px;
+  border-top: 1px solid #DDDDDD;
+}
+.addressTop{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  color: #ec4849;
+  font-weight: bold;
+}
+.addressBottom{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.addAddress{
+  background-color: #FFFFFF;
+  width: 100%;
+  font-size: 16px;
+  text-align: left;
+  text-align: center;
+  color: #ec4849;
+  height: 50px;
+  line-height: 50px;
+}
+
+/* 配送方式 */
+/* .distribution{
+  font-size: 16px;
+  border: 1px solid #DDDDDD;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.distribution label{
+  display: block;
+  padding: 20rpx;
+  border-bottom: 1px solid #DDDDDD;
+}
+.distribution radio{
+  float: right;
+} */
+.distribution{
+  margin-top: 20px;
+  margin-bottom: 20px; 
+  padding-top: 10rpx;
+  padding-bottom: 30rpx;
+  font-size: 16px;
+  margin: 10px;
+  border-bottom: 1px solid #DDDDDD;
+}
+.timeSlot{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.appointmentTime{
+  float: right;
+  font-size: 14px;
+  color: #AAAAAA;
+}
+.Coupon{
+  margin-top: 20px;
+  margin-bottom: 20px; 
+  padding-bottom: 20rpx;
+  font-size: 16px;
+  margin: 10px;
+  border-bottom: 1px solid #DDDDDD;
+}
+.couponTitle{
+  float: left;
+  line-height: 1.5;
+}
+.couponInput{
+  text-align: right;
+}
+.invoice{
+  font-size: 16px;
+  margin: 20rpx;
+}
+.invoice label:first-child{
+  display: block;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 0rpx 0rpx 20rpx 0rpx;
+}
+.invoice checkbox{
+  float: right;
+}
+.invoiceInput{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #DDDDDD;
+  padding: 10px;
+}
+.invoiceInput input{
+  width: 180px;
+  border: 1px solid #EEEEEE;
+}
+.invoice textarea{
+  border: 1px solid #EEEEEE;
+  width: 660rpx;
+  margin-top: 10px;
+  padding: 10px;
+  color: #939393;
+}
+
+.scrollTop{
+  font-size: 12px;
+  background-color: #AAAAAA;
+  padding: 10rpx;
+  color: #FFFFFF;
+}
+.morningContent{
+  padding: 5px 10px 5px 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.timeContent{
+  font-size: 14px;
+}
+.morning{
+  width: 100%;
+  margin-top: 10px;
+  background-color: #DDDDDD;
+  text-align: center;
+}
+.detailBox{
+  border: 1px solid #DDDDDD;
+  background-color: #FFFFFF; 
+  margin: 3px;
+  padding: 5px;
+  font-size: 12px;
+}
+.detailBoxDisabled{
+  border: 1px solid #DDDDDD;
+  background-color: #EEEEEE;
+  color: #AAAAAA;
+  margin: 3px;
+  padding: 5px;
+  font-size: 12px;
+}
+

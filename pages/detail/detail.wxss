@@ -1,0 +1,87 @@
+/* pages/detail/detail.wxss */
+.swiperMain{
+  height: 375px;
+}
+.slide-image{
+  height: 900rpx;
+}
+.goodsDetail{
+  padding: 20rpx 0 0 40rpx;
+}
+.detailChineseName{
+  color: #003a6c;
+}
+.detailEnglishName{
+  color: #003a6c;
+  font-size: 14px;
+}
+.goodsPrice{
+  color: #ff0000;
+  border-bottom: 1px solid #91939a;
+}
+.goodsFreight{
+  font-size: 12px;
+  line-height: 20px;
+  color: #91939a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.goodsTorBar{
+  width: 100%;
+  margin: 0;
+  padding:0;
+}
+.backTopBtn{
+  height: 50px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 0px;
+  border: none;
+}
+.backTopBtn::after{
+  border-radius: 0px;
+  border: none;
+}
+.longPicContent image{
+  width: 100%;
+}
+.descPri{
+  border-top: 1px solid #EEEEEE;
+  text-align: center;
+  margin-top: 20px;
+}
+.descPri button{
+  display: inline-block;
+  font-size: 12px;
+  margin-top: -50%;
+}
+
+.goodsInfoItem{
+  border: 1px solid #91939a;
+  display: inline-block;
+  padding: 10rpx;
+  margin: 10rpx;
+  border-radius: 3px;
+}
+.goodsInfoItemActive{
+  border: 1px solid #ff0000;
+  background-color: #ff0000;
+  color: #FFFFFF;
+}
+.modalCount{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modalBtn button{
+  font-size: 16px;
+  border-radius: 0px;
+  border: 1px solid #ff0000;
+  background-color: #ff0000;
+  color: #FFFFFF;
+}
+.modalBtn button::after{
+  border-radius: 0px;
+  border: none;
+}

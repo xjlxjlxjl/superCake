@@ -1,0 +1,40 @@
+<view>
+  <scroll-view scroll-y='true 'style="height:{{height}}px" bindscrolltolower='lower'>
+    <swiper autoplay="false" 
+            interval="5000" 
+            duration="1000"
+            class='swiperBanner'>
+      <block wx:for="{{ banner }}" wx:key="unqiue">
+        <swiper-item class="banner">
+          <image src="{{ item }}" mode='widthFix' />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='goodsType'>
+      <view wx:for="{{ goodsType }}" wx:for-index="key" wx:key="unique">
+        <navigator url='/pages/goodsType/goodsType?goodsTypeId={{ item.gTypeId }}'>
+          <image mode='widthFix' src='{{ item.img }}'></image>
+        </navigator>
+      </view>
+    </view>
+    <view class='goodsTitle'>
+      <image mode='widthFix' src='{{ path }}/title/allcake.png'></image>
+    </view>
+    <view class='goodscontent'>
+      <navigator class='goodsItem' 
+                wx:for="{{ goodsList }}" 
+                wx:key='unique'
+                url='/pages/detail/detail?goodsName={{ item.name }}&gId={{ item.gId }}'>
+        <image mode='widthFix' class='goodsImg' src='{{ basePath + item.logo }}'></image>
+        <view class='namespace'>
+          <text class='chineseName'>{{ item.chineseName }}</text>
+          <text class='englishName'>{{ item.englishName }}</text>
+          <view class='priceBuy'>
+            <text>￥{{ item.price }}</text>
+            <icon class='icon iconfont icon-gouwuche1'></icon>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </scroll-view>
+</view>

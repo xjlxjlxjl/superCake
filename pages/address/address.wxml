@@ -1,0 +1,36 @@
+<!--address.html  -->
+<view>
+  <view wx:if="{{ addressList.length > 0 }}">
+    <view class='letter' style='background-image: url("http://www.chaorenbox.com/canFly/letter.png");'></view>
+    <view class='addressContent'>
+      <scroll-view class='addressList' scroll-x="true" wx:for="{{ addressList }}" wx:for-index="key" wx:key="unique">
+        <view class='delArea' bindtap='delAddress' id='{{ item.addId }}'>
+          <image src='/images/delete.png' />
+        </view>
+        <view class='nameArea'>
+          <text>{{ item.name }}</text>
+          <text class='addressDefault' wx:if="{{ item.isDef }}">默认</text>
+        </view>
+        <view class='addressArea'>
+          <text>{{ item.phone }}</text>
+          <text>{{ item.area+item.detail }}</text>
+        </view>
+        <navigator 
+          url='/pages/address/edit/edit?addId={{ item.addId }}&name={{ item.name }}&isDef={{ item.isDef }}&phone={{ item.phone }}&area={{ item.area }}&detail={{ item.detail }}&lnglat={{ item.lnglat }}&gender={{ item.gender }}' 
+          open-type='redirect'>
+          <view class='editArea'>
+            <image src='/images/edit.png' />
+          </view>
+        </navigator>
+        <view class='clearfix'></view>
+      </scroll-view>
+      <view class='clearfix'></view>
+    </view>
+  </view>
+  <view class='addressNull' wx:else>
+    <image src='../../images/null/address.png'></image>
+  </view>
+  <view  class='addressBtn'>
+    <button bindtap='addAddress'>+新建地址</button>
+  </view>
+</view>

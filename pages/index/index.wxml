@@ -1,0 +1,51 @@
+<!--index.wxml-->
+<view>
+  <scroll-view scroll-y='true 'style="height:{{height}}px" bindscrolltolower='lower'>
+    <!-- 在线客服 -->
+    <button class='onlineService' open-type="contact"></button>
+    <!-- 轮播 -->
+    <view class='swiper'>
+      <swiper class='swiperMain' autoplay="{{ true }}" 
+              interval="3000" duration="500" style="height: 444rpx;">
+        <block wx:for="{{ imgUrls }}" wx:key="unique">
+          <swiper-item style="height: 444rpx;">
+            <image src="{{ item.img }}" class="slide-image" style="height: 444rpx;" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 滑块 -->
+    <view style="padding: 15rpx;" bindtap='getDiscount'>
+      <!-- 领取优惠券 -->
+      <image mode='widthFix' style='width: 100%;' src='{{ path }}/disCount/666.png'></image>
+    </view>
+    <!-- <video style='width: 100%;' src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"></video> -->
+    <view style='background-color:#e5e5e533;height:10rpx;'></view>
+      <view class='goodsType'>
+        <view wx:for="{{ goodsType }}" wx:for-index="key" wx:key="unique">
+          <navigator url='/pages/goodsType/goodsType?goodsTypeId={{ item.gTypeId }}'>
+            <image mode='widthFix' src='{{ item.img }}'></image>
+          </navigator>
+        </view>
+      </view>
+      <view class='goodsTitle'>
+        <image mode='widthFix' src='{{ path }}/title/hotSale.png'></image>
+      </view>
+      <view class='goodscontent'>
+        <navigator class='goodsItem' 
+                wx:for="{{ goodsList }}" 
+                wx:key='unique'
+                url='/pages/detail/detail?goodsName={{ item.name }}&gId={{ item.gId }}'>
+          <image mode='widthFix' class='goodsImg' src='{{ basePath + item.logo }}'></image>
+          <view class='namespace'>
+            <text class='chineseName'>{{ item.chineseName }}</text>
+            <text class='englishName'>{{ item.englishName }}</text>
+            <view class='priceBuy'>
+              <text>￥{{ item.price }}</text>
+              <icon class='icon iconfont icon-gouwuche1'></icon>
+            </view>
+          </view>
+        </navigator>
+      </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,35 @@
+<view>
+  <view class='addDetail'>
+    <view class='inputBlock'>
+      <input type="text" placeholder="姓名" bindblur="nameChange" value='{{ name }}' />
+    </view>
+    <view class='inputBlock'>
+      <picker bindchange="bindPickerChange" range="{{ sex }}">
+        <view class="picker">
+        <!-- <span> {{ gender }} </span> -->
+           <input type="text" wx:if="{{ gender }}" value='{{ gender == "male" ? "先生": "女士" }}' /> 
+           <input type="text" wx:else placeholder="性别" /> 
+        </view>
+      </picker>
+    </view>
+    <view class='inputBlock'>
+      <input type="tel" placeholder="手机号" bindblur="numberChange" value='{{ phone }}' />
+    </view>
+    <view class='inputBlock'>
+      <input type="text" placeholder="详细地址，如街道，楼盘号等" bindtap='chooseLocation' value='{{ area }}' />
+      <!-- {{ lnglat }} -->
+    </view>
+    <view class='inputBlock'>
+      <input type="text" placeholder="详细地址" bindblur="detailChange" value='{{ detail }}' />
+      <!-- {{ lnglat }} -->
+    </view>
+    <view class='checkBoxBlock'>
+      <checkbox-group bindchange="checkboxChange">
+        <label>
+          <checkbox checked="{{ isDef }}"/> 设为默认地址
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <button class='save' bindtap="saveAddress">保存</button>
+</view>

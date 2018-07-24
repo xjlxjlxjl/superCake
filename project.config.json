@@ -1,0 +1,73 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.91",
+	"appid": "wx9b3af27702b4a80c",
+	"projectname": "%E8%B6%85%E4%BA%BA%E4%B8%8D%E4%BC%9A%E9%A3%9E",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "红包界面",
+					"pathName": "pages/redpage/redpage",
+					"query": "",
+					"scene": "1012"
+				},
+				{
+					"id": -1,
+					"name": "确认订单",
+					"pathName": "pages/checkOrder/checkOrder",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/shoppingcar/shoppingcar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/user/user",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "全部商品",
+					"pathName": "pages/timeLimit/timeLimit",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "梦幻火烈鸟-Dreamlike Flamingo",
+					"pathName": "pages/detail/detail",
+					"query": "goodsName=梦幻火烈鸟-Dreamlike Flamingo&gId=95338&Collage=true&collageId=14"
+				}
+			]
+		}
+	}
+}
